@@ -1,3 +1,3 @@
-# Pet Shop
+# Store
 
 Description goes here.
