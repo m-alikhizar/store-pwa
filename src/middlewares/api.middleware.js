@@ -5,10 +5,7 @@ import {
 } from '../actions';
 
 import ActionTypes from '../constants/ActionTypes';
-
-import {
-  getProductsData
-} from '../services/api.service';
+import { getProductsData } from '../services/api.service';
 
 export default function createAPIMiddleware() {
   return store => next => action => {

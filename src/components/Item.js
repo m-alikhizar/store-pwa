@@ -3,7 +3,7 @@ import { Card, CardImg, CardBody, CardTitle, CardLink } from 'reactstrap';
 
 const Item = ({ img, name, price, onItemClick }) => {
   return (
-    <div className="col-lg-3 col-md-4 col-xs-6">
+    <div className="col-lg-3 col-md-4 col-xs-6" style={{padding: '15px'}}>
       <Card className="d-block mb-4 h-100">
         <CardBody>
           <CardTitle>{name}</CardTitle>

@@ -27,3 +27,17 @@ export const fetchProductsError = (error) => {
     error
   }
 }
+
+export const applySearchCriteria = (query) => {
+  return {
+    type: ActionTypes.APPLY_SEARCH_CRITERIA,
+    query: query
+  }
+}
+
+export const getSearchSuggestions = (query) => {
+  return {
+    type: ActionTypes.FETCH_SEARCH_SUGGESTIONS,
+    query: query
+  }
+}

@@ -1,41 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Row } from 'reactstrap';
+import SearchDropdown from './SearchAutocomplete';
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
+import styles from './AppBarStyles.css';
 
 class AppBar extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
-
     this.state = {
       isOpen: false
     };
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
+
 	render() {
     return (
-      <Navbar color="light" light expand="sm">
-        <NavbarBrand href="/">petshop</NavbarBrand>
+
+      <Navbar className={styles.header} color="light" light expand="sm">
+        <NavbarBrand href="/">Store</NavbarBrand>
         <Nav className="ml-auto" navbar>
+
+          <NavItem>
+            <SearchDropdown />
+          </NavItem>
+        </Nav>
+
+        <NavbarToggler onClick={this.toggle} />
+
+        <Collapse isOpen={this.state.isOpen} navbar>
+
+          <Nav className="ml-auto" navbar>
+
           <NavItem>
             <NavLink href="https://github.com/reactstrap/reactstrap">About</NavLink>
           </NavItem>
@@ -44,7 +47,19 @@ class AppBar extends React.Component {
             <NavLink>Cart</NavLink>
           </NavItem>
         </Nav>
+        </Collapse>
       </Navbar>
+
+      // <Navbar color="light" light expand="sm">
+      //   <NavbarBrand href="/">Store</NavbarBrand>
+      //   <Nav className="ml-auto" navbar>
+          // <NavItem>
+          //   <SearchDropdown />
+          // </NavItem>
+
+
+      //   </Nav>
+      // </Navbar>
     );
   }
 }
