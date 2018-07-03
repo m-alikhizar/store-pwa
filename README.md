@@ -1,3 +1,3 @@
 # Store
 
-[WIP] Work in progress.
+Work in progress.
