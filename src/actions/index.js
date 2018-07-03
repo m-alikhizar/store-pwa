@@ -1,7 +1,6 @@
 import ActionTypes from '../constants/ActionTypes';
 
 export const toggleProperty = (id, prop) => {
-  console.log('In action');
   return {
     type: ActionTypes.TOGGLE_PROPERTY,
     id, prop

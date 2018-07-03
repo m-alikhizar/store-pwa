@@ -5,7 +5,6 @@ import item from './item';
 let allItems = [];
 
 const items = (state = [], action) => {
-  console.log(action)
   switch(action.type) {
 
     case ActionTypes.FETCH_PRODUCTS_RECEIVE:
