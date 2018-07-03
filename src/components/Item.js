@@ -1,18 +1,28 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardLink } from 'reactstrap';
+import { Button, Media} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-const Item = ({ img, name, price, onItemClick }) => {
+const Item = ({ img, name, price, id, onItemClick }) => {
   return (
-    <div className="col-lg-3 col-md-4 col-xs-6" style={{padding: '15px'}}>
-      <Card className="d-block mb-4 h-100">
-        <CardBody>
-          <CardTitle>{name}</CardTitle>
-        </CardBody>
-        <img onClick={onItemClick} width="100%" src={img} alt="Card image cap" />
-        <CardBody>
-          <CardLink href="#">Details</CardLink>
-        </CardBody>
-      </Card>
+    <div className="col-lg-8 col-md-8 col-xs-12" style={{padding: '15px', margin: 'auto'}}>
+
+      <Media>
+        <Media left top href="#" style={{marginRight: '15px'}}>
+          <Media onClick={onItemClick} object src={img} alt="placeholder image cap" style={{width: '128px'}} />
+        </Media>
+        <Media body>
+          <Media heading>{name}</Media>
+
+          <div>Price: {price} AED</div>
+
+          <div>
+            <Button size="sm" color="primary">Add to Cart</Button>
+            {'    '}
+            <Link to={`/product/${id}`}>Details</Link>
+          </div>
+
+        </Media>
+      </Media>
     </div>
   )
 }
