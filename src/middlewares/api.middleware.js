@@ -7,13 +7,15 @@ import {
 import ActionTypes from '../constants/ActionTypes';
 import { getProductsData } from '../services/api.service';
 
+let defer;
 export default function createAPIMiddleware() {
   return store => next => action => {
 
     switch (action.type) {
       case ActionTypes.FETCH_PRODUCTS_REQUEST: {
-        getProductsData()
-          .then(json => {
+        defer = getProductsData();
+
+        defer.then(json => {
             console.log('Got JSON', json);
             next(fetchProductsReceive(json));
           })
@@ -21,6 +23,14 @@ export default function createAPIMiddleware() {
             console.error('CAUGHT ERROR IN USER DATA', error);
             next(fetchProductsError(error));
           });
+        break;
+      }
+
+      case ActionTypes.APPLY_SEARCH_CRITERIA: {
+        if(defer) {
+          defer.then(() => next(action));
+        }
+
         break;
       }
     }
