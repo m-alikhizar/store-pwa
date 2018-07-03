@@ -20,7 +20,6 @@ class AppBar extends React.Component {
     });
   }
 
-
 	render() {
     return (
 
@@ -40,7 +39,7 @@ class AppBar extends React.Component {
           <Nav className="ml-auto" navbar>
 
           <NavItem>
-            <NavLink href="https://github.com/reactstrap/reactstrap">About</NavLink>
+            <NavLink href="/products">About</NavLink>
           </NavItem>
 
           <NavItem>
@@ -49,17 +48,6 @@ class AppBar extends React.Component {
         </Nav>
         </Collapse>
       </Navbar>
-
-      // <Navbar color="light" light expand="sm">
-      //   <NavbarBrand href="/">Store</NavbarBrand>
-      //   <Nav className="ml-auto" navbar>
-          // <NavItem>
-          //   <SearchDropdown />
-          // </NavItem>
-
-
-      //   </Nav>
-      // </Navbar>
     );
   }
 }
