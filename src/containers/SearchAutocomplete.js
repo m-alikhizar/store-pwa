@@ -5,6 +5,8 @@ import { Container, Input } from 'reactstrap';
 import { getSearchSuggestions, applySearchCriteria } from '../actions';
 import _ from 'lodash';
 import styles from './SearchAutocompleteStyles.css';
+import { parse, stringify } from 'query-string';
+
 
 class Search extends React.Component {
   constructor(props) {
@@ -17,18 +19,26 @@ class Search extends React.Component {
     this.dispatch = props.dispatch;
 
     this.onChange = this.onChange.bind(this);
-
     this.onSelect = this.onSelect.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
 
     this.query = _.debounce(this.query, 250, { trailing: true }).bind(this);
   }
 
+  componentDidMount() {
+    const { search } = parse(location.search);
+
+    if(search) {
+      this.setState({ value: search });
+      this.dispatch(applySearchCriteria(search));
+    }
+  }
+
   onKeyDown(e) {
     const val = e.target.value;
 
     if(e.keyCode === 13) {
-      this.dispatch(applySearchCriteria(val));
+      this.onSelect(val);
     }
   }
 
@@ -41,9 +51,12 @@ class Search extends React.Component {
   }
 
   onSelect(val){
-    this.setState({ value: val });
-
-    this.dispatch(applySearchCriteria(val));
+    if(val) {
+      this.setState({ value: val });
+      location.href = '/?' + stringify({ search: val });
+    } else {
+      location.search = '';
+    }
   }
 
   query(str) {
