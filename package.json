@@ -5,10 +5,12 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "lodash": "^4.17.10",
+    "query-string": "^6.1.0",
     "react": "^16.4.0",
     "react-autocomplete": "^1.8.1",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "reactstrap": "^6.1.0",
     "redux": "^4.0.0",
     "uuid": "^3.3.2"
