@@ -4,7 +4,7 @@ const item = (state = {}, action) => {
 
   switch(action.type) {
 
-    case ActionTypes.FETCH_PRODUCTS_RECEIVE:
+    case ActionTypes.APPLY_PRODUCTS_UPDATE:
 
       return { key: state.id, ...state };
 

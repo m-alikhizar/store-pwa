@@ -3,10 +3,10 @@
 export default {
   TOGGLE_PROPERTY: 'toggle_property',
 
-  ALL_PRODUCTS: 'all_products',
   FETCH_PRODUCTS_REQUEST: 'fetch_products_request',
-  FETCH_PRODUCTS_RECEIVE: 'fetch_products_receive',
-  FETCH_PRODUCTS_ERROR: 'fetch_products_error',
+  APPLY_PRODUCTS_UPDATE: 'apply_products_update',
+
+  ALL_PRODUCTS_DATA: 'all_products_data',
 
   APPLY_SEARCH_CRITERIA: 'apply_search_criteria',
 

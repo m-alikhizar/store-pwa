@@ -9,7 +9,7 @@ const search = (state = { suggestions: [], query: '' }, action) => {
 
   switch(action.type) {
 
-    case ActionTypes.FETCH_PRODUCTS_RECEIVE:
+    case ActionTypes.ALL_PRODUCTS_DATA:
       products = [...action.items];
 
       return state;

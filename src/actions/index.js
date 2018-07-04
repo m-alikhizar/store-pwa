@@ -7,23 +7,24 @@ export const toggleProperty = (id, prop) => {
   }
 }
 
-export const fetchProductsRequest = () => {
+export const allProductsData = (items) => {
   return {
-    type: ActionTypes.FETCH_PRODUCTS_REQUEST
-  }
-}
-
-export const fetchProductsReceive = (items) => {
-  return {
-    type: ActionTypes.FETCH_PRODUCTS_RECEIVE,
+    type: ActionTypes.ALL_PRODUCTS_DATA,
     items
   }
 }
 
-export const fetchProductsError = (error) => {
+export const fetchProductsRequest = (index) => {
   return {
-    type: ActionTypes.FETCH_PRODUCTS_ERROR,
-    error
+    type: ActionTypes.FETCH_PRODUCTS_REQUEST,
+    index
+  }
+}
+
+export const applyProductsUpdate = (items) => {
+  return {
+    type: ActionTypes.APPLY_PRODUCTS_UPDATE,
+    items
   }
 }
 

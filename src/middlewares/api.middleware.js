@@ -1,37 +1,73 @@
 import {
   fetchProductsRequest,
-  fetchProductsReceive,
-  fetchProductsError,
+  applyProductsUpdate,
+  allProductsData
 } from '../actions';
+
+import axios from 'axios';
 
 import ActionTypes from '../constants/ActionTypes';
 import { getProductsData } from '../services/api.service';
 
-let defer;
+let promise;
+
+const PRODUCT_FETCH_LIMIT = 5;
+let products_data = [];
+
 export default function createAPIMiddleware() {
+
   return store => next => action => {
 
     switch (action.type) {
+
       case ActionTypes.FETCH_PRODUCTS_REQUEST: {
-        defer = getProductsData();
+        if(products_data.length) {
 
-        defer.then(json => {
-            console.log('Got JSON', json);
-            next(fetchProductsReceive(json));
-          })
-          .catch(error => {
-            console.error('CAUGHT ERROR IN USER DATA', error);
-            next(fetchProductsError(error));
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              const currentIdx = action.index || 0;
+
+              const filtered = products_data.filter(product => product.id <= currentIdx + PRODUCT_FETCH_LIMIT)
+
+              next(applyProductsUpdate(filtered));
+
+              resolve();
+              // reject();
+            }, 1000);
           });
-        break;
-      }
 
-      case ActionTypes.APPLY_SEARCH_CRITERIA: {
-        if(defer) {
-          defer.then(() => next(action));
+        } else {
+          promise = getProductsData();
+
+          promise.then(items => {
+              console.log('Initial Product Request', items);
+
+              products_data = items;
+
+              const currentIdx = action.index || 0;
+
+              const filtered = products_data.filter(product => product.id <= currentIdx + PRODUCT_FETCH_LIMIT)
+
+              next(applyProductsUpdate(filtered));
+              next(allProductsData(products_data));
+            });
+
+          return promise;
         }
 
-        break;
+        // if(promise) {
+        //   promise.then(() => next(action));
+        // }
+
+
+
+      }
+      case ActionTypes.APPLY_SEARCH_CRITERIA: {
+
+        if(promise) {
+          promise.then(() => next(action));
+        }
+
       }
     }
 

@@ -10,7 +10,5 @@ const unwrap = response => {
 };
 
 export const getProductsData = () => {
-
   return axios.get('https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products').then(unwrap);
-  // return fetch('https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products').then(unwrap);
 };

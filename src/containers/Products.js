@@ -1,41 +1,55 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ItemList from '../components/ItemList';
-import { toggleProperty, fetchProductsRequest } from '../actions';
-import { getStore } from '../store';
+import { fetchProductsRequest } from '../actions';
+import { withSubscription, withPaginated, withLoading, withInfiniteScroll } from '../high-order-components';
+import { compose } from 'recompose';
 
-function withSubscription(WrappedComponent, fetchData) {
-  return class extends React.Component {
-    constructor(props) {
-      super(props);
-      fetchData(props);
-    }
+const subscription = dispatch => dispatch(fetchProductsRequest());
 
-    render() {
-      return <WrappedComponent {...this.props} />;
-    }
-  }
+const paginatedCondition = props => !props.loading && props.error;
+
+const loadingCondition = props => props.loading;
+
+const infiniteScrollCondition = props => {
+
+  return (
+  (window.innerHeight + window.scrollY) > (document.body.offsetHeight - 10)
+  && props.items.length
+  )
 }
 
-const ItemListWithSubscription = withSubscription(ItemList, () => {
-  const store = getStore();
-  store.dispatch(fetchProductsRequest());
+const AdvancedList = compose(
+  //withSubscription(subscription),
+  withInfiniteScroll(infiniteScrollCondition),
+  withPaginated(paginatedCondition),
+  withLoading(loadingCondition),
+)(ItemList);
+
+const getCurrentIndex = (items = []) => {
+  const lastItem = items[items.length - 1] || {};
+  return lastItem.id || 0;
+}
+
+const mapStateToProps = state => ({ items: state.items })
+
+const mapDispatchToProps = dispatch => ({
+  dispatch,
+  dispatchPaginatedSearch(index) {
+    // dispatch(fetchProductsRequest(index))
+    return dispatch(fetchProductsRequest(index))
+  }
 });
 
-const mapStateToProps = (state) => {
+const mergeProps = (props, otherProps, ownProps) => {
   return {
-    items: state.items
+    ...props,
+    ...otherProps,
+    ...ownProps,
+    onPaginatedSearch: () => otherProps.dispatchPaginatedSearch(getCurrentIndex(props.items))
   };
-}
+};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onToggleProp: (id, prop) => {
-      dispatch(toggleProperty(id, prop));
-    }
-  };
-}
-
-const Products = connect(mapStateToProps, mapDispatchToProps)(ItemListWithSubscription);
+const Products = connect(mapStateToProps, mapDispatchToProps, mergeProps)(AdvancedList);
 
 export default Products;

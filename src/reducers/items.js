@@ -2,16 +2,22 @@ import ActionTypes from '../constants/ActionTypes';
 import { QueryTransformer } from '../utils';
 import item from './item';
 
-let allItems = [];
+let _items = [];
+let _allItems = [];
 
 const items = (state = [], action) => {
   switch(action.type) {
 
-    case ActionTypes.FETCH_PRODUCTS_RECEIVE:
-    case ActionTypes.ALL_PRODUCTS:
+    case ActionTypes.ALL_PRODUCTS_DATA:
+      _allItems = [...action.items];
 
-      allItems = action.items.map(i => item(i, action));
-      return allItems;
+      return state;
+
+    case ActionTypes.APPLY_PRODUCTS_UPDATE:
+
+      _items = action.items.map(i => item(i, action));
+
+      return _items;
 
     case ActionTypes.APPLY_SEARCH_CRITERIA:
 
@@ -19,10 +25,10 @@ const items = (state = [], action) => {
 
       if(q) {
         const matcher = new QueryTransformer(q);
-        return allItems.filter(p => p.name.match(matcher));
+        return _allItems.filter(p => p.name.match(matcher));
+      } else {
+        return _items;
       }
-
-      return allItems;
 
     default:
       return state;
