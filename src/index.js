@@ -7,17 +7,29 @@ import App from './components/App';
 import styles from './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+const Storage = require('./helpers/storage');
+
 // import registerServiceWorker from './registerServiceWorker';
 
-const initialState = {};
+let initialState = {};
 
-let store = configureStore(initialState);
+Storage.default.read('cart')
+.then((cart) => {
+  console.log('Storage syncing success.');
+  initialState = { cart };
+})
+.catch(() => {
+  console.info('Storage synicing failed.');
+})
+.finally(() => {
+  let store = configureStore(initialState);
 
-render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>, document.getElementById('root'));
+  render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>, document.getElementById('root'));
+});
 
 // registerServiceWorker();
