@@ -6,7 +6,7 @@ const item = (state = {}, action) => {
 
     case ActionTypes.ADD_ITEM:
 
-      return { ...state };
+      return { ...action.item };
 
     default:
       return state

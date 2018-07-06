@@ -15,7 +15,7 @@ const items = (state = [], action) => {
 
     case ActionTypes.APPLY_PRODUCTS_UPDATE:
 
-      _items = action.items.map(i => item(i, {type: ActionTypes.ADD_ITEM, ...action}));
+      _items = action.items.map(i => item({}, { type: ActionTypes.ADD_ITEM, item: i }));
 
       return _items;
 
