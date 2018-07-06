@@ -1,5 +1,5 @@
 import { initialItems, applyProductsUpdate, allItems } from '../actions';
-import { getProductsData } from '../services/api.service';
+import { getProductsData, getProductData } from '../services/api.service';
 import ActionTypes from '../constants/ActionTypes';
 import { uid } from '../helpers/utils';
 import axios from 'axios';
@@ -59,6 +59,18 @@ export default function createAPIMiddleware() {
 
       case ActionTypes.ADD_TO_CART: {
         action.item = products_data.filter(item => item.id === action.id).pop();
+
+        break;
+      }
+
+      case ActionTypes.ADD_ITEM: {
+
+        getProductData(action.id).then((data) => {
+          action.item = data;
+          next(action);
+        });
+
+        break;
       }
     }
 
