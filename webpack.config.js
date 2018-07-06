@@ -6,7 +6,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname + '/dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
 
   module: {
@@ -49,5 +50,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     })
-  ]
+  ],
+
+  devtool: 'source-map',
+
+  devServer: {
+    historyApiFallback: true,
+    port: 8090
+  },
+
+  stats: {
+    errorDetails: true
+  }
 };

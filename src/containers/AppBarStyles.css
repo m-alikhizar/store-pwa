@@ -1,0 +1,15 @@
+.header {
+  width: 100%;
+  margin-left: -15px;
+  border-bottom: 1px solid #e0e0e0;
+  position: fixed !important;
+  z-index: 1;
+}
+
+.header > ul {
+  width: 40%;
+}
+
+.header > ul > li {
+  width: 100%;
+}
