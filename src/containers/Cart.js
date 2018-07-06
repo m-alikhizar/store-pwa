@@ -49,11 +49,7 @@ class ItemCart extends React.Component {
         <Popover className={styles.popover} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} placement={'bottom'} isOpen={this.state.popoverOpen} target={'popover-cart'} toggle={this.toggle}>
           <div className={styles.overlay}></div>
           <PopoverBody className={styles.body}>
-            { this.props.items.length && this.props.items.map(item =>
-              <Item key={item.id} {...item}
-                children={<ItemActions quantity={item.quantity} />}
-              />)
-            }
+            { this.props.items.length && this.props.items.map(item => <Item key={item.id} {...item} children={<ItemActions quantity={item.quantity} />} />)}
             { !this.props.items.length && ' ITEMS' }
           </PopoverBody>
 

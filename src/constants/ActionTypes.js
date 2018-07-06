@@ -1,12 +1,14 @@
 'use statics';
 
 export default {
-  TOGGLE_PROPERTY: 'toggle_property',
 
-  FETCH_PRODUCTS_REQUEST: 'fetch_products_request',
+  INITIAL_ITEMS: 'initial_items',
+
+  ALL_ITEMS: 'all_items',
+
   APPLY_PRODUCTS_UPDATE: 'apply_products_update',
 
-  ALL_PRODUCTS_DATA: 'all_products_data',
+  ADD_ITEM: 'add_item',
 
   APPLY_SEARCH_CRITERIA: 'apply_search_criteria',
 

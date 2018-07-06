@@ -3,14 +3,14 @@ import { Suggestion } from '../models';
 import { QueryTransformer } from '../helpers/utils';
 
 
-let products = [];
+let _allItems = [];
 
 const search = (state = { suggestions: [], query: '' }, action) => {
 
   switch(action.type) {
 
-    case ActionTypes.ALL_PRODUCTS_DATA:
-      products = [...action.items];
+    case ActionTypes.ALL_ITEMS:
+      _allItems = [...action.items];
 
       return state;
 
@@ -20,8 +20,8 @@ const search = (state = { suggestions: [], query: '' }, action) => {
 
       if(q) {
         const matcher = new QueryTransformer(q);
-        const result = products.filter(p => p.name.match(matcher))
-          .map(product => new Suggestion(product.name));
+        const result = _allItems.filter(p => p.name.match(matcher))
+          .map(item => new Suggestion(product.name));
 
         return { ...state, query: action.query, suggestions: [...result] };
       } else {

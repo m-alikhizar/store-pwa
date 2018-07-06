@@ -8,14 +8,14 @@ let _allItems = [];
 const items = (state = [], action) => {
   switch(action.type) {
 
-    case ActionTypes.ALL_PRODUCTS_DATA:
+    case ActionTypes.ALL_ITEMS:
       _allItems = [...action.items];
 
       return state;
 
     case ActionTypes.APPLY_PRODUCTS_UPDATE:
 
-      _items = action.items.map(i => item(i, action));
+      _items = action.items.map(i => item(i, {type: ActionTypes.ADD_ITEM, ...action}));
 
       return _items;
 

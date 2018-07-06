@@ -1,15 +1,8 @@
-import {
-  fetchProductsRequest,
-  applyProductsUpdate,
-  allProductsData
-} from '../actions';
-
-import axios from 'axios';
-
-import { uid } from '../helpers/utils';
-
-import ActionTypes from '../constants/ActionTypes';
+import { initialItems, applyProductsUpdate, allItems } from '../actions';
 import { getProductsData } from '../services/api.service';
+import ActionTypes from '../constants/ActionTypes';
+import { uid } from '../helpers/utils';
+import axios from 'axios';
 
 let promise;
 
@@ -22,7 +15,7 @@ export default function createAPIMiddleware() {
 
     switch (action.type) {
 
-      case ActionTypes.FETCH_PRODUCTS_REQUEST: {
+      case ActionTypes.INITIAL_ITEMS: {
         if(products_data.length) {
 
           return new Promise((resolve, reject) => {
@@ -50,7 +43,7 @@ export default function createAPIMiddleware() {
               const filtered = products_data.filter(product => product.id <= currentIdx + PRODUCT_FETCH_LIMIT)
 
               next(applyProductsUpdate(filtered));
-              next(allProductsData(products_data));
+              next(allItems(products_data));
             });
 
           return promise;

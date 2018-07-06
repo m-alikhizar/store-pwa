@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ItemList from '../components/ItemList';
-import { fetchProductsRequest } from '../actions';
+import { initialItems } from '../actions';
 import { withSubscription, withPaginated, withLoading, withInfiniteScroll } from '../high-order-components';
 import { compose } from 'recompose';
 
@@ -26,7 +26,7 @@ const mapStateToProps = state => ({ items: state.items });
 const mapDispatchToProps = dispatch => ({
     dispatch,
     dispatchPaginatedSearch(index = 0) {
-      return dispatch(fetchProductsRequest(index))
+      return dispatch(initialItems(index))
     }
   });
 

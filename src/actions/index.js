@@ -1,23 +1,23 @@
 import ActionTypes from '../constants/ActionTypes';
 
-export const toggleProperty = (id, prop) => {
+export const allItems = (items) => {
   return {
-    type: ActionTypes.TOGGLE_PROPERTY,
-    id, prop
-  }
-}
-
-export const allProductsData = (items) => {
-  return {
-    type: ActionTypes.ALL_PRODUCTS_DATA,
+    type: ActionTypes.ALL_ITEMS,
     items
   }
 }
 
-export const fetchProductsRequest = (index) => {
+export const initialItems = (index) => {
   return {
-    type: ActionTypes.FETCH_PRODUCTS_REQUEST,
+    type: ActionTypes.INITIAL_ITEMS,
     index
+  }
+}
+
+export const addItem = (id) => {
+  return {
+    type: ActionTypes.ADD_ITEM,
+    id
   }
 }
 

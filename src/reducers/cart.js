@@ -1,12 +1,12 @@
 import ActionTypes from '../constants/ActionTypes';
 import Storage from '../helpers/storage';
 
-export const defaultState = {
+const defaultState = {
   items: [],
   count: 0
 };
 
-export const cart = (state = defaultState, action) => {
+const cart = (state = defaultState, action) => {
 
   switch(action.type) {
 
@@ -54,3 +54,5 @@ export const cart = (state = defaultState, action) => {
       return state
   }
 }
+
+export default cart;

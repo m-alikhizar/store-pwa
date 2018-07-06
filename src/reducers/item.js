@@ -4,19 +4,9 @@ const item = (state = {}, action) => {
 
   switch(action.type) {
 
-    case ActionTypes.APPLY_PRODUCTS_UPDATE:
+    case ActionTypes.ADD_ITEM:
 
-      return { key: state.id, ...state };
-
-    case ActionTypes.TOGGLE_PROPERTY:
-
-      if(action.id !== state.id) {
-          return state
-      }
-
-      state[action.prop] = !state[action.prop]
-
-      return { ...state }
+      return { ...state };
 
     default:
       return state
