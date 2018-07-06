@@ -14,4 +14,8 @@ export default {
 
   FETCH_SEARCH_SUGGESTIONS: 'fetch_search_suggestions',
 
+  ADD_TO_CART: 'add_to_cart',
+
+  CHECKOUT: 'checkout'
+
 }

@@ -41,3 +41,17 @@ export const getSearchSuggestions = (query) => {
     query: query
   }
 }
+
+export const addToCart = (props) => {
+  return {
+    type: ActionTypes.ADD_TO_CART,
+    ...props
+  }
+}
+
+export const checkout = (items) => {
+  return {
+    type: ActionTypes.CHECKOUT,
+    items
+  }
+}

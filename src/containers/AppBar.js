@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SearchDropdown from './SearchAutocomplete';
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
+import Cart from './Cart';
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import styles from './AppBarStyles.css';
 
 class AppBar extends React.Component {
@@ -39,11 +40,19 @@ class AppBar extends React.Component {
           <Nav className="ml-auto" navbar>
 
           <NavItem>
-            <NavLink href="/products">About</NavLink>
+            <NavLink href="/about">
+              <Button color="link">About</Button>
+            </NavLink>
           </NavItem>
 
           <NavItem>
-            <NavLink>Cart</NavLink>
+            <NavLink href="/products">
+              <Button color="link" onClick={this.toggle}>Products</Button>
+            </NavLink>
+          </NavItem>
+
+          <NavItem>
+            <NavLink><Cart /></NavLink>
           </NavItem>
         </Nav>
         </Collapse>
