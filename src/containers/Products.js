@@ -36,7 +36,6 @@ const mapStateToProps = state => ({ items: state.items })
 const mapDispatchToProps = dispatch => ({
   dispatch,
   dispatchPaginatedSearch(index) {
-    // dispatch(fetchProductsRequest(index))
     return dispatch(fetchProductsRequest(index))
   }
 });

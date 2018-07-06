@@ -76,7 +76,6 @@ export const withInfiniteScroll = (conditionFn) => (Component) =>
       if(conditionFn(this.props)
       && !this.state.loading
       && !this.state.error) {
-        console.log('SCROLLING');
         e.preventDefault()
         this.getData()
       }
