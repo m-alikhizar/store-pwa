@@ -1,5 +1,5 @@
 import ActionTypes from '../constants/ActionTypes';
-import { QueryTransformer } from '../utils';
+import { QueryTransformer } from '../helpers/utils';
 import item from './item';
 
 let _items = [];

@@ -1,4 +1,4 @@
-import { uid } from '../utils';
+import { uid } from '../helpers/utils';
 
 export class Suggestion {
 

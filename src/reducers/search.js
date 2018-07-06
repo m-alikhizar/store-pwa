@@ -1,6 +1,6 @@
 import ActionTypes from '../constants/ActionTypes';
 import { Suggestion } from '../models';
-import { QueryTransformer } from '../utils';
+import { QueryTransformer } from '../helpers/utils';
 
 
 let products = [];

@@ -6,6 +6,8 @@ import {
 
 import axios from 'axios';
 
+import { uid } from '../helpers/utils';
+
 import ActionTypes from '../constants/ActionTypes';
 import { getProductsData } from '../services/api.service';
 
@@ -40,7 +42,6 @@ export default function createAPIMiddleware() {
           promise = getProductsData();
 
           promise.then(items => {
-              console.log('Initial Product Request', items);
 
               products_data = items;
 
@@ -54,13 +55,6 @@ export default function createAPIMiddleware() {
 
           return promise;
         }
-
-        // if(promise) {
-        //   promise.then(() => next(action));
-        // }
-
-
-
       }
       case ActionTypes.APPLY_SEARCH_CRITERIA: {
 
@@ -68,6 +62,10 @@ export default function createAPIMiddleware() {
           promise.then(() => next(action));
         }
 
+      }
+
+      case ActionTypes.ADD_TO_CART: {
+        action.item = products_data.filter(item => item.id === action.id).pop();
       }
     }
 
