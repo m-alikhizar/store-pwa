@@ -31,4 +31,4 @@ This will navigate chrome to `http://localhost:8090/`
 *  Bug fixes    -  If you find a bug, let me know either contacting me or using GitHub issues.
 *  New Features    -  Tell me the problem/feature request either contacting me or in a new GitHub issue.
 
-Also please let me know if you have any feedback.
+Most importantly, if there is any feedback please let me know.
