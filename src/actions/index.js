@@ -55,3 +55,10 @@ export const checkout = (items) => {
     items
   }
 }
+
+export const sort = (order, key) => {
+  return {
+    type: ActionTypes.APPLY_SORTING,
+    order, key
+  }
+}
