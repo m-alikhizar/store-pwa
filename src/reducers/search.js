@@ -10,6 +10,7 @@ const search = (state = { suggestions: [], query: '' }, action) => {
   switch(action.type) {
 
     case ActionTypes.ALL_ITEMS:
+
       _allItems = [...action.items];
 
       return state;
@@ -21,7 +22,7 @@ const search = (state = { suggestions: [], query: '' }, action) => {
       if(q) {
         const matcher = new QueryTransformer(q);
         const result = _allItems.filter(p => p.name.match(matcher))
-          .map(item => new Suggestion(product.name));
+          .map(item => new Suggestion(item.name));
 
         return { ...state, query: action.query, suggestions: [...result] };
       } else {
