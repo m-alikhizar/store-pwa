@@ -27,3 +27,23 @@ export function uid() {
 
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
+
+
+export function sort(list, order, key) {
+
+  if(order === 'ASC') {
+    return list.sort(((a, b) => {
+      if(a[key] < b[key]) return -1;
+      if(a[key] > b[key]) return 1;
+      return 0;
+    }));
+  } else if(order === 'DESC') {
+    return list.sort(((a, b) => {
+      if(a[key] > b[key]) return -1;
+      if(a[key] < b[key]) return 1;
+      return 0;
+    }));
+  } else {
+    return list;
+  }
+}
