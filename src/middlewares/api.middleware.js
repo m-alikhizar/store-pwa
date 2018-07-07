@@ -6,7 +6,7 @@ import axios from 'axios';
 
 let promise;
 
-const PRODUCT_FETCH_LIMIT = 5;
+const PRODUCT_FETCH_LIMIT = 10;
 let products_data = [];
 
 export default function createAPIMiddleware() {

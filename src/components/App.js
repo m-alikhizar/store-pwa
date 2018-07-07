@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // import VisibleItemList from '../containers/VisibleItemList'
 // import AddItem from '../containers/AddItem'
@@ -16,19 +16,16 @@ const App = () => {
   return (
     <Container fluid={true}>
       <Route path='/' component={AppBar}/>
-
       <Row>
-        <Col lg="12" xs="12">
+        <Col lg={12}>
           <Switch>
             <Route exact path='/' component={Products}/>
             <Route exact path='/products' component={Products}/>
             <Route exact path='/product/:id' component={ProductDetails}/>
             <Route component={NotFound}/>
-
           </Switch>
         </Col>
       </Row>
-
     </Container>
   )
 }

@@ -10,6 +10,8 @@ export default {
 
   ADD_ITEM: 'add_item',
 
+  APPLY_SORTING: 'sort_items',
+
   APPLY_SEARCH_CRITERIA: 'apply_search_criteria',
 
   FILTER_ITEMS: 'filter_items',

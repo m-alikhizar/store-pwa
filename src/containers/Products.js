@@ -11,7 +11,7 @@ const loadingCondition = props => props.loading;
 
 const infiniteScrollCondition = props =>
   ((window.innerHeight + window.scrollY) > (document.body.offsetHeight - 10)
-  && props.items.length);
+  && props.itemlist.length);
 
 const AdvancedList = compose(
     withInfiniteScroll(infiniteScrollCondition),
@@ -21,7 +21,11 @@ const AdvancedList = compose(
 
 const last = (items = []) => _.last(items) || {};
 
-const mapStateToProps = state => ({ items: state.items });
+const mapStateToProps = state => ({
+    items: state.items,
+    itemlist: state.items.list,
+    meta: state.items.meta
+  });
 
 const mapDispatchToProps = dispatch => ({
     dispatch,
@@ -34,7 +38,7 @@ const mergeProps = (props, otherProps, ownProps) => ({
     ...props,
     ...otherProps,
     ...ownProps,
-    onPaginatedSearch: () => otherProps.dispatchPaginatedSearch(last(props.items).id)
+    onPaginatedSearch: () => otherProps.dispatchPaginatedSearch(last(props.itemlist).id)
   });
 
 const Products = connect(mapStateToProps, mapDispatchToProps, mergeProps)(AdvancedList);
