@@ -3,10 +3,10 @@ import _ from 'lodash';
 import { Alert, Link } from 'reactstrap';
 
 export const withLoading = (conditionFn) => (Component) => (props) =>
-  <div style={{marginBottom: '30px', position: 'relative'}}>
+  <div>
     <Component {...props} />
 
-    { conditionFn(props) && <Alert className="col-lg-8 col-md-8 col-xs-12 text-center" style={{fontSize: '32px'}} color="light ">
+    { conditionFn(props) && <Alert className="col-8 text-center" style={{fontSize: '32px'}} color="light ">
       Loading...
     </Alert> }
   </div>
