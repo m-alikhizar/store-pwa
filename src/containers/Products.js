@@ -19,7 +19,7 @@ const AdvancedList = compose(
     withLoading(loadingCondition),
   )(ItemList);
 
-const last = (items = []) => _.last(items) || {};
+const last = (items = []) => items.length ? _.maxBy(items, 'id') : {};
 
 const mapStateToProps = state => ({
     items: state.items,
