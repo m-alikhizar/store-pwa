@@ -5,17 +5,21 @@ import { Link } from 'react-router-dom';
 import { addToCart, sort } from '../actions';
 import { parse, stringify } from 'query-string';
 
+import PropTypes from 'prop-types';
+
+
 class ItemList extends React.Component {
   constructor(props) {
     super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.onButtonClick = this.onButtonClick.bind(this);
 
     this.state = {
       dropdownOpen: false,
       key: 'price'
     };
+
+    this.toggle = this.toggle.bind(this);
+    this.onDropdownClick = this.onDropdownClick.bind(this);
+    this.onButtonClick = this.onButtonClick.bind(this);
   }
 
   toggle() {
@@ -90,6 +94,12 @@ const style = {
   borderRadius: '3px',
   border: '1px solid #e0e0e0',
   background: '#f7f7f7'
+};
+
+ItemList.propTypes = {
+  itemlist: PropTypes.array.isRequired,
+  meta: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const ItemActionBar = ({ dispatch, id }) => {
