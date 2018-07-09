@@ -46,7 +46,7 @@ class ItemList extends React.Component {
     location.search = stringify(search);
   }
 
-  componentDidMount(props) {
+  query() {
     const search = parse(location.search);
     const { key, order } = search;
 
@@ -56,6 +56,10 @@ class ItemList extends React.Component {
       this.setState({ key, order });
       this.props.dispatch(sort(order, key));
     }
+  }
+
+  componentDidMount() {
+    this.query();
   }
 
   render() {

@@ -6,8 +6,6 @@ import sinon from 'sinon';
 
 describe('<ItemList />', () => {
 
-  let wrapper;
-
   const props = {
     itemlist: [],
     meta: {},
@@ -15,39 +13,34 @@ describe('<ItemList />', () => {
   };
 
   beforeEach(() => {
-    wrapper = shallow(<ItemList {...props}/>);
+
   });
 
   it('should render without crashing', () => {
-    expect(wrapper.length).toEqual(1);
-  });
+    const wrapper = shallow(<ItemList {...props}/>);
 
-  it('should have been called componentDidMount', () => {
-
-    const componentDidMount = sinon.spy();
-
-    // wrapper.instance().componentDidMount = componentDidMount;
-
-    mount(<ItemList  {...props}/>)
-
-    expect(wrapper.instance().componentDidMount.callCount).toEqual(1);
+    expect(wrapper.length).to.equal(1);
   });
 
   it('should have called click event', () => {
-    const component = toJson(wrapper);
+
+    const wrapper = shallow(<ItemList {...props}/>);
+
     const buttons = wrapper.find('Button');
 
-    expect(buttons).toHaveLength(2);
+    expect(buttons).to.have.lengthOf(2);
 
-    const onButtonClick = jest.fn();
-    wrapper.instance().onButtonClick = onButtonClick;
+    const stub = sinon.stub(wrapper.instance(), 'onButtonClick');
 
     buttons.first().simulate('click');
 
-    expect(onButtonClick).toHaveBeenCalledTimes(1);
+    expect(stub.callCount).to.equal(1);
   });
 
   it('should have a match snapshot', () => {
+
+    const wrapper = shallow(<ItemList {...props}/>);
+
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
