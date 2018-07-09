@@ -16,7 +16,10 @@ git ^2.15.2
 git clone https://github.com/khizar-ali/Store.git
 ```
 2. Go to the repository `cd Store` and run
-```npm install```
+```
+git checkout master
+npm install
+```
 3. Run the application
 ```npm start```
 
