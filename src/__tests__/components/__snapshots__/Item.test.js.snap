@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Item /> should match snapshot 1`] = `
+<div
+  style={
+    Object {
+      "padding": "15px",
+    }
+  }
+>
+  <Media>
+    <Media
+      href="#"
+      left={true}
+      style={
+        Object {
+          "marginRight": "15px",
+        }
+      }
+      top={true}
+    >
+      <Media
+        alt="placeholder image cap"
+        object={true}
+        src="test"
+        style={
+          Object {
+            "width": "128px",
+          }
+        }
+      />
+    </Media>
+    <Media
+      body={true}
+    >
+      <Media
+        heading={true}
+      >
+        <strong>
+          name
+        </strong>
+      </Media>
+      <div>
+        Price: 
+        1
+         AED
+      </div>
+    </Media>
+  </Media>
+</div>
+`;

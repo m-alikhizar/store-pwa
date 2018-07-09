@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemList /> should have a match snapshot 1`] = `
+<div
+  style={
+    Object {
+      "margin": "90px auto",
+    }
+  }
+>
+  <Alert
+    closeAriaLabel="Close"
+    color="light"
+    isOpen={true}
+    style={
+      Object {
+        "textAlign": "right",
+      }
+    }
+    tag="div"
+    transition={
+      Object {
+        "appear": true,
+        "baseClass": "fade",
+        "baseClassActive": "show",
+        "enter": true,
+        "exit": true,
+        "in": true,
+        "mountOnEnter": false,
+        "onEnter": [Function],
+        "onEntered": [Function],
+        "onEntering": [Function],
+        "onExit": [Function],
+        "onExited": [Function],
+        "onExiting": [Function],
+        "tag": "div",
+        "timeout": 150,
+        "unmountOnExit": true,
+      }
+    }
+  >
+    <ButtonGroup
+      role="group"
+      tag="div"
+    >
+      <ButtonDropdown
+        isOpen={false}
+        toggle={[Function]}
+      >
+        <DropdownToggle
+          aria-haspopup={true}
+          caret={true}
+          color="secondary"
+          outline={true}
+        />
+        <DropdownMenu
+          flip={true}
+          tag="div"
+        >
+          <DropdownItem
+            onClick={[Function]}
+            tag="button"
+            toggle={true}
+          >
+            Price
+          </DropdownItem>
+          <DropdownItem
+            onClick={[Function]}
+            tag="button"
+            toggle={true}
+          >
+            Name
+          </DropdownItem>
+        </DropdownMenu>
+      </ButtonDropdown>
+      <Button
+        active={false}
+        color="secondary"
+        onClick={[Function]}
+        outline={true}
+        style={
+          Object {
+            "zIndex": 0,
+          }
+        }
+        tag="button"
+      >
+        ↑
+      </Button>
+      <Button
+        active={false}
+        color="secondary"
+        onClick={[Function]}
+        outline={true}
+        style={
+          Object {
+            "zIndex": 0,
+          }
+        }
+        tag="button"
+      >
+        ↓
+      </Button>
+    </ButtonGroup>
+  </Alert>
+  <div
+    className="row"
+  />
+</div>
+`;
