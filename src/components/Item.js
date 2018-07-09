@@ -1,7 +1,8 @@
 import React from 'react';
 import { Media} from 'reactstrap';
+import PropTypes from 'prop-types';
 
-const Item = ({ img, name, price, id, dispatch, children }) => {
+const Item = ({ img, name, price, id, children }) => {
   return (
     <div style={{padding: '15px'}}>
       <Media>
@@ -18,4 +19,11 @@ const Item = ({ img, name, price, id, dispatch, children }) => {
   )
 }
 
+
+Item.propTypes = {
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired
+}
 export default Item
