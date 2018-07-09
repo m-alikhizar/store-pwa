@@ -1,11 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import SearchDropdown from './SearchAutocomplete';
 import Cart from './Cart';
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import styles from './AppBarStyles.css';
 
-class AppBar extends React.Component {
+export default class AppBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -60,7 +59,3 @@ class AppBar extends React.Component {
     );
   }
 }
-
-AppBar = connect()(AppBar);
-
-export default AppBar;
