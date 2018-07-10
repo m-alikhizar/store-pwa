@@ -1,30 +1,34 @@
 import React from 'react';
-import ItemList from '../../components/ItemList';
 import toJson from 'enzyme-to-json';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
+import ItemList from '../../components/ItemList';
 
 describe('<ItemList />', () => {
-
   const props = {
     itemlist: [],
     meta: {},
     dispatch: jest.fn()
   };
 
-  beforeEach(() => {
-
-  });
+  beforeEach(() => {});
 
   it('should render without crashing', () => {
-    const wrapper = shallow(<ItemList {...props}/>);
+    const wrapper = shallow(<ItemList {...props} />);
 
     expect(wrapper.length).to.equal(1);
   });
 
-  it('should have called click event', () => {
+  it('component should have been mounted', () => {
+    const spy = sinon.spy(ItemList.prototype, 'componentDidMount');
 
-    const wrapper = shallow(<ItemList {...props}/>);
+    const mounted = mount(<ItemList {...props} />);
+
+    expect(spy.callCount).to.equal(1);
+  });
+
+  it('should have called click event', () => {
+    const wrapper = shallow(<ItemList {...props} />);
 
     const buttons = wrapper.find('Button');
 
@@ -38,8 +42,7 @@ describe('<ItemList />', () => {
   });
 
   it('should have a match snapshot', () => {
-
-    const wrapper = shallow(<ItemList {...props}/>);
+    const wrapper = shallow(<ItemList {...props} />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });

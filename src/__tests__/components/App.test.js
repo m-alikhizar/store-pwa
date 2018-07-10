@@ -1,17 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import reducers from '../../reducers'
-import App from '../../components/App'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
-
+import reducers from '../../reducers';
+import App from '../../components/App';
 
 describe('<App />', () => {
-  xit('should render without crashing', () => {
+  it('should render without crashing', () => {
     const wrapper = shallow(<App />);
     const component = wrapper.dive();
 
-    // expect(component).toMatchSnapshot();
-  })
-})
+    expect(component).toMatchSnapshot();
+  });
+});

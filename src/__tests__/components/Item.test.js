@@ -1,11 +1,10 @@
 import React from 'react';
-import Item from '../../components/Item';
 import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
+import Item from '../../components/Item';
 
 describe('<Item />', () => {
-
   let wrapper;
 
   const props = {
@@ -17,20 +16,11 @@ describe('<Item />', () => {
   };
 
   beforeEach(() => {
-
-    wrapper = shallow(<Item {...props}/>);
+    wrapper = shallow(<Item {...props} />);
   });
 
   it('should render without crashing', () => {
-    expect(wrapper.length).toEqual(1);
-  });
-
-  it('component should have been mounted', () => {
-    const spy = sinon.spy(Item.prototype, "componentDidMount");
-
-    const mounted = mount(<ItemList {...props} />);
-
-    expect(spy.callCount).to.equal(1);
+    expect(wrapper.length).to.equal(1);
   });
 
   it('should match snapshot', () => {

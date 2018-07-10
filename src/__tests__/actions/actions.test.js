@@ -1,54 +1,85 @@
-import * as actions from '../../actions'
+import * as Actions from '../../actions';
+import ActionTypes from '../../constants/ActionTypes';
 
-xdescribe('actions', () => {
-  it('should create an action to add a movie', () => {
-    const props = {
-      title: 'Inception',
-      genre: 'SiFi'
-    }
+describe('actions', () => {
+  it('should create an action to list All Items', () => {
+    const items = [
+      {
+        id: 1,
+        title: 'title'
+      }
+    ];
 
-    const expectedAction = {
-      type: 'ADD_MOVIE',
-      props
-    }
-    expect(actions.addMovie(props)).toEqual(expectedAction)
-  })
+    const expected = {
+      type: ActionTypes.ALL_ITEMS,
+      items
+    };
 
-  it('should create an action to toggle a property', () => {
+    expect(Actions.allItems(items)).to.deep.equal(expected);
+  });
 
-    const id = 0
-    const prop = 'test'
+  it('should create an action to Initial Items', () => {
+    const index = 0;
 
-    const expectedAction = {
-      type: 'TOGGLE_PROPERTY',
-      id, prop
-    }
-    expect(actions.toggleProperty(id, prop)).toEqual(expectedAction)
-  })
+    const expected = {
+      type: ActionTypes.INITIAL_ITEMS,
+      index
+    };
+    expect(Actions.initialItems(index)).to.deep.equal(expected);
+  });
 
-  it('should create an action to update a movie', () => {
+  it('should create an action to Add Item', () => {
+    const id = 0;
 
-    const id = 0
-    const props = {
-      title: 'title',
-      genre: 'genre'
-    }
-
-    const expectedAction = {
-      type: 'UPDATE_MOVIE',
-      id, props
-    }
-    expect(actions.updateMovie(id, props)).toEqual(expectedAction)
-  })
-
-  it('should create an action to delete a movie', () => {
-
-    const id = 0
-
-    const expectedAction = {
-      type: 'DELETE_MOVIE',
+    const expected = {
+      type: ActionTypes.ADD_ITEM,
       id
-    }
-    expect(actions.deleteMovie(id)).toEqual(expectedAction)
-  })
-})
+    };
+
+    expect(Actions.addItem(id)).to.deep.equal(expected);
+  });
+
+  it('should create an action to Apply Products Update', () => {
+    const items = [{ id: 1 }];
+
+    const expected = {
+      type: ActionTypes.APPLY_PRODUCTS_UPDATE,
+      items
+    };
+
+    expect(Actions.applyProductsUpdate(items)).to.deep.equal(expected);
+  });
+
+  it('should create an action to Apply Search Criteria', () => {
+    const query = 'test';
+
+    const expected = {
+      type: ActionTypes.APPLY_SEARCH_CRITERIA,
+      query
+    };
+
+    expect(Actions.applySearchCriteria(query)).to.deep.equal(expected);
+  });
+
+  it('should create an action to Get Search Suggestions', () => {
+    const query = 'test';
+
+    const expected = {
+      type: ActionTypes.FETCH_SEARCH_SUGGESTIONS,
+      query
+    };
+
+    expect(Actions.getSearchSuggestions(query)).to.deep.equal(expected);
+  });
+
+  it('should create an action to Add to Cart', () => {
+    const props = { id: 1, item: {} };
+
+    const expected = {
+      type: ActionTypes.ADD_TO_CART,
+      ...props
+    };
+
+    expect(Actions.addToCart(props)).to.deep.equal(expected);
+  });
+});
