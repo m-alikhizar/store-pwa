@@ -84,7 +84,7 @@ class ItemList extends React.Component {
           {itemlist.map(item =>
             <div className="col-lg-4 col-md-6  col-xs-6" key={item.id}>
               <div className="mb-4" style={style}>
-                <Item {...item} dispatch={dispatch} children={ <ItemActionBar dispatch={ dispatch } id={item.id}/>} />
+                <Item {...item} dispatch={dispatch} children={ <Actions dispatch={ dispatch } id={item.id}/>} />
               </div>
             </div>
           )}
@@ -106,7 +106,7 @@ ItemList.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-const ItemActionBar = ({ dispatch, id }) => {
+const Actions = ({ dispatch, id }) => {
   return (
     <div style={{marginTop: '10px'}}>
       <Button style={{marginRight: '10px'}} size="sm" onClick={() => dispatch(addToCart({id, quantity: 1}))} color="primary">Add to Cart</Button>
