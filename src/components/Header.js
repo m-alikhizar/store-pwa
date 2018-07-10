@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchDropdown from './SearchAutocomplete';
-import Cart from './Cart';
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button } from 'reactstrap';
-import styles from './AppBarStyles.css';
+import SearchDropdown from '../containers/SearchAutocomplete';
+import Cart from '../containers/Cart';
+import styles from '../styles/Header.css';
 
-export default class AppBar extends React.Component {
+export default class Header extends React.Component {
   constructor(props) {
     super(props);
 

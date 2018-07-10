@@ -4,7 +4,7 @@ import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import Item from '../components/Item';
 import { checkout } from '../actions';
 import NumberFormat from 'react-number-format';
-import styles from './CartStyles.css';
+import styles from '../styles/Cart.css';
 
 class ItemCart extends React.Component {
   constructor(props) {
@@ -49,15 +49,15 @@ class ItemCart extends React.Component {
         <Popover className={styles.popover} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} placement={'bottom'} isOpen={this.state.popoverOpen} target={'popover-cart'} toggle={this.toggle}>
           <div className={styles.overlay}></div>
           <PopoverBody className={styles.body}>
-            { this.props.items.length && this.props.items.map(item => <Item key={item.id} {...item} children={<ItemActions quantity={item.quantity} />} />)}
+            { this.props.items.map(item => (<Item key={item.id} {...item} children={<ItemActions quantity={item.quantity} />} />))}
             { !this.props.items.length && ' ITEMS' }
           </PopoverBody>
 
           { this.props.items.length != 0 && <div className={styles.actions}>
             <span>
             TOTAL <NumberFormat
-              value={this.props.cart.price}
               displayType={'text'}
+              value={this.props.cart.price}
               thousandSeparator={true}
               suffix={' AED'} />
             </span>

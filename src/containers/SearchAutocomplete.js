@@ -3,10 +3,11 @@ import Autocomplete from 'react-autocomplete';
 import { connect } from 'react-redux';
 import { Container, Input } from 'reactstrap';
 import { getSearchSuggestions, applySearchCriteria } from '../actions';
-import _ from 'lodash';
-import styles from './SearchAutocompleteStyles.css';
 import { parse, stringify } from 'query-string';
 
+import styles from '../styles/SearchAutocomplete.css';
+
+import _ from 'lodash';
 
 class Search extends React.Component {
   constructor(props) {
