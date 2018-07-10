@@ -1,7 +1,5 @@
 {
-  "presets": ["env", "react"],
-  "plugins": [
-    "transform-decorators-legacy",
-    "babel-plugin-transform-object-rest-spread"
-  ]
+  presets: ['env', 'react', 'flow'],
+  plugins: ['transform-decorators-legacy', 'babel-plugin-transform-object-rest-spread'],
+  retainLines: true,
 }

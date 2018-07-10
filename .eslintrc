@@ -1,8 +1,24 @@
-// {
-//   "extends": "airbnb",
-//   "env": {
-//     "browser": true,
-//     "node": true,
-//     "mocha": true
-//   }
-// }
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": ["react", "jsx-a11y", "import"],
+
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+
+  "rules": {
+    "comma-dangle": ["warn", "never"],
+    "linebreak-style": 0,
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+
+    "no-restricted-globals": [2, "location"],
+
+    "no-unused-expressions": "warn",
+    "no-useless-concat": "warn",
+    "block-scoped-var": "error",
+    "consistent-return": "error"
+  }
+}
