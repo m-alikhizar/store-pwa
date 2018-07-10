@@ -1,9 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ItemList from '../components/ItemList';
 import { initialItems } from '../actions';
 import { withSubscription, withPaginated, withLoading, withInfiniteScroll } from '../high-order-components';
 import { compose } from 'recompose';
+import { connect } from '../decorators';
 
 const paginatedCondition = props => !props.loading && props.error;
 
@@ -21,26 +21,28 @@ const AdvancedList = compose(
 
 const last = (items = []) => items.length ? _.maxBy(items, 'id') : {};
 
-const mapStateToProps = state => ({
+@connect(
+  state => ({
     items: state.items,
     itemlist: state.items.list,
     meta: state.items.meta
-  });
-
-const mapDispatchToProps = dispatch => ({
+  }),
+  dispatch => ({
     dispatch,
     dispatchPaginatedSearch(index = 0) {
       return dispatch(initialItems(index))
     }
-  });
-
-const mergeProps = (props, otherProps, ownProps) => ({
+  }),
+  (props, otherProps, ownProps) => ({
     ...props,
     ...otherProps,
     ...ownProps,
     onPaginatedSearch: () => otherProps.dispatchPaginatedSearch(last(props.itemlist).id)
-  });
+  })
+)
 
-const Products = connect(mapStateToProps, mapDispatchToProps, mergeProps)(AdvancedList);
-
-export default Products;
+export default class Products extends React.Component {
+  render() {
+    return <AdvancedList {...this.props}/>
+  }
+}
