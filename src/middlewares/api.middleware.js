@@ -58,7 +58,8 @@ export default function createAPIMiddleware() {
       }
 
       case ActionTypes.ADD_TO_CART: {
-        action.item = products_data.filter(item => item.id === action.id).pop();
+        if(!action.item)
+          action.item = products_data.filter(item => item.id === action.id).pop();
 
         break;
       }

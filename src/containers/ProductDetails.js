@@ -10,9 +10,14 @@ class ItemDetails extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.match;
+    try {
+      const { props: { match: { params: { id } } } } = this;
 
-    this.props.dispatch(addItem(1));
+      if(id) this.props.dispatch(addItem(1));
+
+    } catch(e) {
+      console.error('Url mismatch. provide product id in query parameters.');
+    }
   }
 
   render() {
@@ -20,13 +25,13 @@ class ItemDetails extends React.Component {
 
     return (
       <Container style={{margin: '90px 0'}} fluid={true}>
-        <Item {...item} children={action}/>
+        { item.id && <Item {...item} children={<Actions dispatch={dispatch} item={item} />} /> }
       </Container>
     );
   }
 }
 
-const action = (<Button size="lg" onClick={() => dispatch(addToCart({id: item.id, quantity: 1}))} color="primary">Add to Cart</Button>);
+const Actions = ({ dispatch, item }) => (<Button size="lg" onClick={() => dispatch(addToCart({item, id: item.id, quantity: 1}))} color="primary">Add to Cart</Button>);
 
 const mapStateToProps = (store) => ({ item: store.item });
 
