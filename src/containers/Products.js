@@ -1,25 +1,28 @@
 import React from 'react';
+import { compose } from 'recompose';
 import ItemList from '../components/ItemList';
 import { initialItems } from '../actions';
-import { withSubscription, withPaginated, withLoading, withInfiniteScroll } from '../high-order-components';
-import { compose } from 'recompose';
+import {
+  withSubscription,
+  withPaginated,
+  withLoading,
+  withInfiniteScroll
+} from '../high-order-components';
 import { connect } from '../decorators';
 
 const paginatedCondition = props => !props.loading && props.error;
 
 const loadingCondition = props => props.loading;
 
-const infiniteScrollCondition = props =>
-  ((window.innerHeight + window.scrollY) > (document.body.offsetHeight - 10)
-  && props.itemlist.length);
+const infiniteScrollCondition = props => window.innerHeight + window.scrollY > document.body.offsetHeight - 10 && props.itemlist.length;
 
 const AdvancedList = compose(
-    withInfiniteScroll(infiniteScrollCondition),
-    withPaginated(paginatedCondition),
-    withLoading(loadingCondition),
-  )(ItemList);
+  withInfiniteScroll(infiniteScrollCondition),
+  withPaginated(paginatedCondition),
+  withLoading(loadingCondition)
+)(ItemList);
 
-const last = (items = []) => items.length ? _.maxBy(items, 'id') : {};
+const last = (items = []) => (items.length ? _.maxBy(items, 'id') : {});
 
 @connect(
   state => ({
@@ -30,7 +33,7 @@ const last = (items = []) => items.length ? _.maxBy(items, 'id') : {};
   dispatch => ({
     dispatch,
     dispatchPaginatedSearch(index = 0) {
-      return dispatch(initialItems(index))
+      return dispatch(initialItems(index));
     }
   }),
   (props, otherProps, ownProps) => ({
@@ -40,9 +43,10 @@ const last = (items = []) => items.length ? _.maxBy(items, 'id') : {};
     onPaginatedSearch: () => otherProps.dispatchPaginatedSearch(last(props.itemlist).id)
   })
 )
-
 export default class Products extends React.Component {
+  componentDidMount() {}
+
   render() {
-    return <AdvancedList {...this.props}/>
+    return <AdvancedList {...this.props} />;
   }
 }
