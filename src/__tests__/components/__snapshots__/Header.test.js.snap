@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should have a match snapshot 1`] = `
+<Navbar
+  color="light"
+  expand="sm"
+  light={true}
+  tag="nav"
+>
+  <NavbarBrand
+    href="/"
+    tag="a"
+  >
+    Store
+  </NavbarBrand>
+  <Nav
+    className="ml-auto"
+    navbar={true}
+    tag="ul"
+    vertical={false}
+  >
+    <NavItem
+      tag="li"
+    >
+      <Connect(Search) />
+    </NavItem>
+  </Nav>
+  <NavbarToggler
+    onClick={[Function]}
+    tag="button"
+    type="button"
+  />
+  <Collapse
+    appear={false}
+    enter={true}
+    exit={true}
+    in={false}
+    isOpen={false}
+    mountOnEnter={false}
+    navbar={true}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    tag="div"
+    timeout={350}
+    unmountOnExit={false}
+  >
+    <Nav
+      className="ml-auto"
+      navbar={true}
+      tag="ul"
+      vertical={false}
+    >
+      <NavItem
+        tag="li"
+      >
+        <NavLink
+          href="/about"
+          tag="a"
+        >
+          <Button
+            color="link"
+            tag="button"
+          >
+            About
+          </Button>
+        </NavLink>
+      </NavItem>
+      <NavItem
+        tag="li"
+      >
+        <NavLink
+          href="/products"
+          tag="a"
+        >
+          <Button
+            color="link"
+            tag="button"
+          >
+            Products
+          </Button>
+        </NavLink>
+      </NavItem>
+      <NavItem
+        tag="li"
+      >
+        <NavLink
+          tag="a"
+        >
+          <Connect(ItemCart) />
+        </NavLink>
+      </NavItem>
+    </Nav>
+  </Collapse>
+</Navbar>
+`;

@@ -1,5 +1,14 @@
 import React from 'react';
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink,
+  Button
+} from 'reactstrap';
 import SearchDropdown from '../containers/SearchAutocomplete';
 import Cart from '../containers/Cart';
 import styles from '../styles/Header.css';
@@ -20,13 +29,15 @@ export default class Header extends React.Component {
     });
   }
 
-	render() {
+  componentDidMount() {}
+
+  render() {
     return (
-
       <Navbar className={styles.header} color="light" light expand="sm">
-        <NavbarBrand href="/">Store</NavbarBrand>
+        <NavbarBrand href="/">
+Store
+        </NavbarBrand>
         <Nav className="ml-auto" navbar>
-
           <NavItem>
             <SearchDropdown />
           </NavItem>
@@ -35,25 +46,29 @@ export default class Header extends React.Component {
         <NavbarToggler onClick={this.toggle} />
 
         <Collapse isOpen={this.state.isOpen} navbar>
-
           <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="/about">
+                <Button color="link">
+About
+                </Button>
+              </NavLink>
+            </NavItem>
 
-          <NavItem>
-            <NavLink href="/about">
-              <Button color="link">About</Button>
-            </NavLink>
-          </NavItem>
+            <NavItem>
+              <NavLink href="/products">
+                <Button color="link">
+Products
+                </Button>
+              </NavLink>
+            </NavItem>
 
-          <NavItem>
-            <NavLink href="/products">
-              <Button color="link" onClick={this.toggle}>Products</Button>
-            </NavLink>
-          </NavItem>
-
-          <NavItem>
-            <NavLink><Cart /></NavLink>
-          </NavItem>
-        </Nav>
+            <NavItem>
+              <NavLink>
+                <Cart />
+              </NavLink>
+            </NavItem>
+          </Nav>
         </Collapse>
       </Navbar>
     );
