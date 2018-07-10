@@ -1,21 +1,45 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {
+  Container, Card, CardImg, CardBody, CardTitle, CardText, Button
+} from 'reactstrap';
 import { addItem, addToCart } from '../actions';
 import Item from '../components/Item';
-import { Container, Card, CardImg, CardBody, CardTitle, CardText, Button } from 'reactstrap';
+import { connect } from '../decorators';
 
-class ItemDetails extends React.Component {
+const Actions = ({ dispatch, item }) => (
+  <Button
+    size="lg"
+    onClick={() => dispatch(addToCart({ item, id: item.id, quantity: 1 }))}
+    color="primary"
+  >
+
+    Add to Cart
+  </Button>
+);
+
+@connect(
+  store => ({ item: store.item }),
+  dispatch => ({ dispatch })
+)
+export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
     try {
-      const { props: { match: { params: { id } } } } = this;
+      const {
+        props: {
+          match: {
+            params: { id }
+          }
+        }
+      } = this;
 
-      if(id) this.props.dispatch(addItem(1));
+      const quantity = 1;
 
-    } catch(e) {
+      if (id) this.props.dispatch(addItem(quantity));
+    } catch (e) {
       console.error('Url mismatch. provide product id in query parameters.');
     }
   }
@@ -24,19 +48,9 @@ class ItemDetails extends React.Component {
     const { item, dispatch } = this.props;
 
     return (
-      <Container style={{margin: '90px 0'}} fluid={true}>
-        { item.id && <Item {...item} children={<Actions dispatch={dispatch} item={item} />} /> }
+      <Container style={{ margin: '90px 0' }} fluid>
+        {item.id && <Item {...item} children={<Actions dispatch={dispatch} item={item} />} />}
       </Container>
     );
   }
 }
-
-const Actions = ({ dispatch, item }) => (<Button size="lg" onClick={() => dispatch(addToCart({item, id: item.id, quantity: 1}))} color="primary">Add to Cart</Button>);
-
-const mapStateToProps = (store) => ({ item: store.item });
-
-const mapDispatchToProps = (dispatch) => ({ dispatch })
-
-const ProductDetails = connect(mapStateToProps, mapDispatchToProps)(ItemDetails);
-
-export default ProductDetails;
