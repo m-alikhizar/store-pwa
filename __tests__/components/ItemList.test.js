@@ -2,7 +2,7 @@ import React from 'react';
 import toJson from 'enzyme-to-json';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
-import ItemList from '../../components/ItemList';
+import ItemList from '../../src/components/ItemList';
 
 describe('<ItemList />', () => {
   const props = {

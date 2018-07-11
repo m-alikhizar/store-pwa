@@ -76,7 +76,7 @@
       "<rootDir>/node_modules/fbjs"
     ],
     "roots": [
-      "<rootDir>/src/"
+      "<rootDir>/__tests__/"
     ],
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/"

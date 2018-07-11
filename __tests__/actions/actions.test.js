@@ -1,5 +1,5 @@
-import * as Actions from '../../actions';
-import ActionTypes from '../../constants/ActionTypes';
+import * as Actions from '../../src/actions';
+import ActionTypes from '../../src/constants/ActionTypes';
 
 describe('actions', () => {
   it('should create an action to list All Items', () => {
