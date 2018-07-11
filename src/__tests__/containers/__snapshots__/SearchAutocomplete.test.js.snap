@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchAutocomplete /> should have a match snapshot 1`] = `
+<SearchAutocomplete
+  dispatch={[Function]}
+  suggestions={Array []}
+/>
+`;
