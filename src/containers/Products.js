@@ -2,12 +2,11 @@ import React from 'react';
 import { compose } from 'recompose';
 import ItemList from '../components/ItemList';
 import { initialItems } from '../actions';
-import {
-  withSubscription,
-  withPaginated,
-  withLoading,
-  withInfiniteScroll
-} from '../high-order-components';
+
+import Paginated from '../hoc/with/Paginated';
+import Loading from '../hoc/with/Loading';
+import InfiniteScroll from '../hoc/with/InfiniteScroll';
+
 import { connect } from '../decorators';
 
 const paginatedCondition = props => !props.loading && props.error;
@@ -17,9 +16,9 @@ const loadingCondition = props => props.loading;
 const infiniteScrollCondition = props => window.innerHeight + window.scrollY > document.body.offsetHeight - 10 && props.itemlist.length;
 
 const AdvancedList = compose(
-  withInfiniteScroll(infiniteScrollCondition),
-  withPaginated(paginatedCondition),
-  withLoading(loadingCondition)
+  InfiniteScroll(infiniteScrollCondition),
+  Paginated(paginatedCondition),
+  Loading(loadingCondition)
 )(ItemList);
 
 const last = (items = []) => (items.length ? _.maxBy(items, 'id') : {});
