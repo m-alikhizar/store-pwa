@@ -9,6 +9,27 @@ const cache = {
   products: []
 };
 
+let productsPromise;
+
+const fetchProducts = () => {
+  if (!productsPromise) {
+    productsPromise = axios
+      .get('https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products')
+      .then(unwrap)
+      .then((products) => {
+        cache.products = _.clone(products);
+        return products;
+      })
+      .catch(() => (productsPromise = null));
+  }
+
+  return productsPromise;
+};
+
+export const getProductData = id => axios
+  .get(`https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products/${id}`)
+  .then(unwrap);
+
 const unwrap = (response) => {
   if (response.status !== 200) {
     console.error('Error fetching data', response.status, response);
@@ -44,7 +65,7 @@ export const getProductsData = (index, { query, order, key }) => new Promise((re
 
     setTimeout(() => resolve(chunk), 1000);
   } else {
-    fetchProducts
+    fetchProducts()
       .then((products) => {
         const chunk = transform(products, query, order, key).slice(index, PRODUCT_FETCH_LIMIT);
 
@@ -61,7 +82,7 @@ export const getSearchSuggestions = query => new Promise((resolve, reject) => {
   if (q) {
     const matcher = new QueryTransformer(q);
 
-    fetchProducts.then(() => {
+    fetchProducts().then(() => {
       suggestions = cache.products
         .filter(p => p.name.match(matcher))
         .map(item => new Suggestion(item.name));
@@ -73,15 +94,5 @@ export const getSearchSuggestions = query => new Promise((resolve, reject) => {
   }
 });
 
-export const getProductData = id => axios
-  .get(`https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products/${id}`)
-  .then(unwrap);
-
 // FETCHING products data immediately instead of waiting for components to mount.
-const fetchProducts = axios
-  .get('https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products')
-  .then(unwrap)
-  .then((products) => {
-    cache.products = _.clone(products);
-    return products;
-  });
+productsPromise = fetchProducts();
