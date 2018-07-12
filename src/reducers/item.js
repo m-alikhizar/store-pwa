@@ -2,7 +2,7 @@ import ActionTypes from '../constants/ActionTypes';
 
 const item = (state = {}, action) => {
   switch (action.type) {
-    case ActionTypes.ADD_ITEM:
+    case ActionTypes.GET_ITEM_RECEIVE:
       return { ...action.item };
 
     default:
