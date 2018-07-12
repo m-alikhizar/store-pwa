@@ -2,17 +2,12 @@ import React from 'react';
 import {
   Container, Card, CardImg, CardBody, CardTitle, CardText, Button
 } from 'reactstrap';
-import { addItem, addToCart } from '../actions';
+import { getItemRequest, addToCart } from '../actions';
 import Item from '../components/Item';
 import { connect } from '../decorators';
 
 const Actions = ({ dispatch, item }) => (
-  <Button
-    size="lg"
-    onClick={() => dispatch(addToCart({ item, id: item.id, quantity: 1 }))}
-    color="primary"
-  >
-
+  <Button size="lg" onClick={() => dispatch(addToCart({ ...item, quantity: 1 }))} color="primary">
     Add to Cart
   </Button>
 );
@@ -36,9 +31,7 @@ export default class ProductDetails extends React.Component {
         }
       } = this;
 
-      const quantity = 1;
-
-      if (id) this.props.dispatch(addItem(quantity));
+      if (id) this.props.dispatch(getItemRequest(id));
     } catch (e) {
       console.error('Url mismatch. provide product id in query parameters.');
     }
