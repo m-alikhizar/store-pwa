@@ -1,16 +1,13 @@
 import ActionTypes from '../constants/ActionTypes';
 
 const item = (state = {}, action) => {
-
-  switch(action.type) {
-
+  switch (action.type) {
     case ActionTypes.ADD_ITEM:
-
       return { ...action.item };
 
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default item;
