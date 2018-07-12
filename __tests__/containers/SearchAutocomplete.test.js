@@ -14,7 +14,7 @@ describe('<SearchAutocomplete />', () => {
       let promise;
 
       switch (action.type) {
-        case ActionTypes.APPLY_SEARCH_CRITERIA:
+        case ActionTypes.SET_FILTERS:
         case ActionTypes.FETCH_SEARCH_SUGGESTIONS:
           promise = new Promise((resolve) => {
             resolve();
