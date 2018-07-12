@@ -1,27 +1,25 @@
 import React from 'react';
 import { compose } from 'recompose';
+import { connect } from '../decorators';
 import ItemList from '../components/ItemList';
-import { initialItems } from '../actions';
-
 import Paginated from '../hoc/with/Paginated';
 import Loading from '../hoc/with/Loading';
 import InfiniteScroll from '../hoc/with/InfiniteScroll';
+import { getInitialItemsRequest, getItemsRequest, getInitialItemsError } from '../actions';
 
-import { connect } from '../decorators';
+const paginatedCondition = props => !props.meta.loading && props.meta.error;
 
-const paginatedCondition = props => !props.loading && props.error;
+const loadingCondition = props => props.meta.loading;
 
-const loadingCondition = props => props.loading;
-
-const infiniteScrollCondition = props => window.innerHeight + window.scrollY > document.body.offsetHeight - 10 && props.itemlist.length;
+const infiniteScrollCondition = props =>
+  // eslint-disable-next-line
+  window.innerHeight + window.scrollY > document.body.offsetHeight - 10 && props.itemlist.length;
 
 const AdvancedList = compose(
   InfiniteScroll(infiniteScrollCondition),
-  Paginated(paginatedCondition),
-  Loading(loadingCondition)
+  Loading(loadingCondition),
+  Paginated(paginatedCondition)
 )(ItemList);
-
-const last = (items = []) => (items.length ? _.maxBy(items, 'id') : {});
 
 @connect(
   state => ({
@@ -31,21 +29,33 @@ const last = (items = []) => (items.length ? _.maxBy(items, 'id') : {});
   }),
   dispatch => ({
     dispatch,
-    dispatchPaginatedSearch(index = 0) {
-      return dispatch(initialItems(index));
+    dispatchGetItemsRequest(index) {
+      return dispatch(getItemsRequest(index));
     }
   }),
   (props, otherProps, ownProps) => ({
     ...props,
     ...otherProps,
     ...ownProps,
-    onPaginatedSearch: () => otherProps.dispatchPaginatedSearch(last(props.itemlist).id)
+    getItemsRequest: () => otherProps.dispatchGetItemsRequest(props.meta.lastIdx)
   })
 )
 export default class Products extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const { dispatch } = props;
+
+    dispatch(getInitialItemsRequest()).catch(() => {
+      dispatch(getInitialItemsError());
+    });
+  }
+
   componentDidMount() {}
 
   render() {
-    return <AdvancedList {...this.props} />;
+    const newProps = { ...this.props, ...this.state };
+
+    return <AdvancedList {...newProps} />;
   }
 }
