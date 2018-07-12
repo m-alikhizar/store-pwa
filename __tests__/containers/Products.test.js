@@ -13,8 +13,8 @@ describe('<Products />', () => {
     let promise;
 
     switch (action.type) {
-      case ActionTypes.INITIAL_ITEMS:
-        promise = new Promise((resolve, reject) => {
+      case ActionTypes.GET_INITIAL_ITEMS_REQUEST:
+        promise = new Promise((resolve) => {
           resolve();
         });
         break;
