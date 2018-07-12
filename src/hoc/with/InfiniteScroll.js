@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { getInitialItemsError } from '../../actions';
+import { getItemsRequest } from '../../actions';
 
 const InfiniteScroll = conditionFn => Component => class withInfiniteScroll extends React.Component {
   constructor(props) {
@@ -16,19 +16,7 @@ const InfiniteScroll = conditionFn => Component => class withInfiniteScroll exte
   }
 
   onScroll(e) {
-    const { meta } = this.props;
-
-    if (conditionFn(this.props) && !meta.loading && !meta.error) {
-      e.preventDefault();
-
-      const promise = this.props.getItemsRequest();
-
-      const { dispatch } = this.props;
-
-      promise.catch(() => {
-        dispatch(getInitialItemsError());
-      });
-    }
+    conditionFn(this.props) && this.props.getItemsRequest();
   }
 
   render() {
