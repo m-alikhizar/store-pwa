@@ -4,7 +4,7 @@ exports[`<ItemList /> should have a match snapshot 1`] = `
 <div
   style={
     Object {
-      "margin": "90px auto",
+      "margin": "90px auto 0 auto",
     }
   }
 >

@@ -3,7 +3,8 @@
 exports[`<Products /> should have a match snapshot 1`] = `
 <Products
   dispatch={[Function]}
-  dispatchPaginatedSearch={[Function]}
+  dispatchGetItemsRequest={[Function]}
+  getItemsRequest={[Function]}
   itemlist={Array []}
   items={
     Object {
@@ -12,6 +13,5 @@ exports[`<Products /> should have a match snapshot 1`] = `
     }
   }
   meta={Object {}}
-  onPaginatedSearch={[Function]}
 />
 `;
