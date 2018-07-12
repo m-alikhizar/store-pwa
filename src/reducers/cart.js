@@ -7,10 +7,11 @@ const defaultState = {
   count: 0
 };
 
-const cart = (state = defaultState, action: object) => {
+const cart = (state = defaultState, action) => {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART: {
       const { items } = state;
+
       const item = {
         ...action.item,
         quantity: action.quantity
@@ -43,7 +44,10 @@ const cart = (state = defaultState, action: object) => {
         // eslint-disable-next-line
         location.href = 'https://www.google.com';
       });
-      return state;
+      return {
+        items: [],
+        count: 0
+      };
     }
     default:
       return state;
