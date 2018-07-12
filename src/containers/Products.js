@@ -5,7 +5,7 @@ import ItemList from '../components/ItemList';
 import Paginated from '../hoc/with/Paginated';
 import Loading from '../hoc/with/Loading';
 import InfiniteScroll from '../hoc/with/InfiniteScroll';
-import { getInitialItemsRequest, getItemsRequest, getInitialItemsError } from '../actions';
+import { getInitialItemsRequest, getItemsRequest } from '../actions';
 
 const paginatedCondition = props => !props.meta.loading && props.meta.error;
 
@@ -13,7 +13,10 @@ const loadingCondition = props => props.meta.loading;
 
 const infiniteScrollCondition = props =>
   // eslint-disable-next-line
-  window.innerHeight + window.scrollY > document.body.offsetHeight - 10 && props.itemlist.length;
+  window.innerHeight + window.scrollY > document.body.offsetHeight - 10 &&
+  props.itemlist.length
+  && !props.meta.loading
+  && !props.meta.error;
 
 const AdvancedList = compose(
   InfiniteScroll(infiniteScrollCondition),
@@ -41,17 +44,10 @@ const AdvancedList = compose(
   })
 )
 export default class Products extends React.Component {
-  constructor(props) {
-    super(props);
-
-    const { dispatch } = props;
-
-    dispatch(getInitialItemsRequest()).catch(() => {
-      dispatch(getInitialItemsError());
-    });
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(getInitialItemsRequest());
   }
-
-  componentDidMount() {}
 
   render() {
     const newProps = { ...this.props, ...this.state };
