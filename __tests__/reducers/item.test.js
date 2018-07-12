@@ -1,5 +1,5 @@
 import item from '../../src/reducers/item';
-import ActionTypes from '../../src/constants/ActionTypes';
+import { getItemReceive } from '../../src/actions';
 
 describe('item reducer', () => {
   it('should return the initial state', () => {
@@ -8,19 +8,14 @@ describe('item reducer', () => {
     expect(item(undefined, {})).to.deep.equal(defaultState);
   });
 
-  it('should handle ADD_ITEM', () => {
+  it('should handle GET_ITEM_RECEIVE', () => {
     const data = {
       id: 1,
       title: 'title'
     };
 
-    const action = {
-      type: ActionTypes.ADD_ITEM,
-      item: data
-    };
-
     const expected = data;
 
-    expect(item(undefined, action)).to.deep.equal(expected);
+    expect(item(undefined, getItemReceive(data))).to.deep.equal(expected);
   });
 });
