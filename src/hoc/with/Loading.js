@@ -4,12 +4,13 @@ import { Alert } from 'reactstrap';
 const Loading = conditionFn => Component => props => (
   <div>
     <Component {...props} />
-
-    {conditionFn(props) && (
-      <Alert className="col-8 text-center" style={{ fontSize: '32px' }} color="light ">
-        Loading...
-      </Alert>
-    )}
+    <div style={{ height: '90px' }}>
+      {conditionFn(props) && (
+        <Alert className="text-center" style={{ fontSize: '32px' }} color="light ">
+          Loading...
+        </Alert>
+      )}
+    </div>
   </div>
 );
 

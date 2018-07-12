@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import { getInitialItemsError } from '../../actions';
 
 const InfiniteScroll = conditionFn => Component => class withInfiniteScroll extends React.Component {
   constructor(props) {
@@ -7,18 +8,7 @@ const InfiniteScroll = conditionFn => Component => class withInfiniteScroll exte
 
     this.onScroll = _.throttle(this.onScroll, 1000).bind(this);
 
-    this.getData = this.getData.bind(this);
-
     window.addEventListener('scroll', this.onScroll, false);
-
-    this.state = {
-      error: false,
-      loading: false
-    };
-  }
-
-  componentWillMount() {
-    this.getData();
   }
 
   componentWillUnmount() {
@@ -26,39 +16,23 @@ const InfiniteScroll = conditionFn => Component => class withInfiniteScroll exte
   }
 
   onScroll(e) {
-    if (conditionFn(this.props) && !this.state.loading && !this.state.error) {
+    const { meta } = this.props;
+
+    if (conditionFn(this.props) && !meta.loading && !meta.error) {
       e.preventDefault();
-      this.getData();
+
+      const promise = this.props.getItemsRequest();
+
+      const { dispatch } = this.props;
+
+      promise.catch(() => {
+        dispatch(getInitialItemsError());
+      });
     }
   }
 
-  getData() {
-    const promise = this.props.onPaginatedSearch();
-
-    this.setState({
-      error: false,
-      loading: true
-    });
-
-    promise
-      .then(() => {
-        this.setState({
-          error: false,
-          loading: false
-        });
-      })
-      .catch(() => {
-        this.setState({
-          error: true,
-          loading: false
-        });
-      });
-  }
-
   render() {
-    const newProps = { ...this.props, ...this.state };
-
-    return <Component {...newProps} />;
+    return <Component {...this.props} />;
   }
 };
 
