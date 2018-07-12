@@ -15,23 +15,19 @@ describe('cart reducer', () => {
   });
 
   it('should handle ADD_TO_CART', () => {
-    const quantity = 1;
-
     const item = {
       id: 1,
       title: 'title',
-      price: 1
+      price: 1,
+      quantity: 1
     };
 
-    const action = addToCart({
-      item,
-      quantity
-    });
+    const action = addToCart(item);
 
     sinon.stub(Storage, 'write');
 
     const expected = {
-      items: [{ ...item, quantity }],
+      items: [{ ...item }],
       count: 1,
       price: 1
     };
