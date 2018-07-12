@@ -1,25 +1,23 @@
 'use statics';
 
 export default {
+  GET_INITIAL_ITEMS_REQUEST: 'get_initial_items_request',
 
-  INITIAL_ITEMS: 'initial_items',
+  GET_ITEMS_REQUEST: 'get_items_request',
 
-  ALL_ITEMS: 'all_items',
+  GET_ITEMS_ERROR: 'get_items_error',
 
-  APPLY_PRODUCTS_UPDATE: 'apply_products_update',
+  GET_ITEMS_RECEIVE: 'get_items_receive',
 
-  ADD_ITEM: 'add_item',
+  SET_FILTERS: 'set_filters',
 
-  APPLY_SORTING: 'sort_items',
+  GET_ITEM_REQUEST: 'get_item_request',
 
-  APPLY_SEARCH_CRITERIA: 'apply_search_criteria',
-
-  FILTER_ITEMS: 'filter_items',
+  GET_ITEM_RECEIVE: 'get_item_receive',
 
   FETCH_SEARCH_SUGGESTIONS: 'fetch_search_suggestions',
 
   ADD_TO_CART: 'add_to_cart',
 
   CHECKOUT: 'checkout'
-
-}
+};
