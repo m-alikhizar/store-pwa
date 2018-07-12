@@ -12,12 +12,9 @@ const cart = (state = defaultState, action) => {
     case ActionTypes.ADD_TO_CART: {
       const { items } = state;
 
-      const item = {
-        ...action.item,
-        quantity: action.quantity
-      };
+      const { item } = action;
 
-      const atIdx = items.findIndex(it => it.id === item.id);
+      const atIdx = items.findIndex(i => i.id === item.id);
 
       if (atIdx !== -1) {
         items[atIdx].quantity += item.quantity;
@@ -25,14 +22,10 @@ const cart = (state = defaultState, action) => {
         items.push(item);
       }
 
-      const price = items.reduce((total, i) => i.price * i.quantity + total, 0);
-      const count = items.reduce((total, i) => i.quantity + total, 0);
-
       const newState = {
-        ...state,
         items,
-        price,
-        count
+        price: items.reduce((total, i) => i.price * i.quantity + total, 0),
+        count: items.reduce((total, i) => i.quantity + total, 0)
       };
 
       Storage.write('cart', JSON.stringify(newState));
