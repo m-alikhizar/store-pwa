@@ -4,24 +4,21 @@ import { Container } from 'reactstrap';
 import { parse, stringify } from 'query-string';
 import _ from 'lodash';
 import { connect } from '../decorators';
-import { getSearchSuggestions, applySearchCriteria } from '../actions';
+import { setFilters, getSearchSuggestions } from '../actions';
 import styles from '../styles/SearchAutocomplete.css';
 
-/*
- * mapStateToProps
- */
-
-@connect(store => ({ suggestions: store.search.suggestions }))
+@connect()
 
 /*
- * SearchAutocomplete
+ * Search Autocomplete
  */
 export default class SearchAutocomplete extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: ''
+      value: '',
+      suggestions: []
     };
 
     this.dispatch = props.dispatch;
@@ -38,7 +35,7 @@ export default class SearchAutocomplete extends React.Component {
 
     if (search) {
       this.setState({ value: search });
-      this.dispatch(applySearchCriteria(search));
+      this.dispatch(setFilters({ query: search }));
     }
   }
 
@@ -68,7 +65,9 @@ export default class SearchAutocomplete extends React.Component {
   }
 
   query(str) {
-    this.dispatch(getSearchSuggestions(str));
+    this.dispatch(getSearchSuggestions(str)).then((suggestions) => {
+      this.setState({ suggestions });
+    });
   }
 
   render() {
@@ -82,7 +81,7 @@ export default class SearchAutocomplete extends React.Component {
       <Container className={styles.wrapper}>
         <Autocomplete
           getItemValue={item => item.label}
-          items={this.props.suggestions}
+          items={this.state.suggestions}
           inputProps={{ onKeyDown: this.onKeyDown, placeholder: 'Search' }}
           renderItem={renderItemComponent}
           value={this.state.value}
