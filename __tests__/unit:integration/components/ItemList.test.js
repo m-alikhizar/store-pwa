@@ -41,9 +41,9 @@ describe('<ItemList />', () => {
     expect(stub.callCount).to.equal(1);
   });
 
-  it('should have a match snapshot', () => {
-    const wrapper = shallow(<ItemList {...props} />);
+  // it('should have a match snapshot', () => {
+  //   const wrapper = shallow(<ItemList {...props} />);
 
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
+  //   expect(toJson(wrapper)).toMatchSnapshot();
+  // });
 });
