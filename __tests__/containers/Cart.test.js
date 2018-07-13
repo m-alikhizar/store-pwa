@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import Cart from '../../src/containers/Cart';
 
-fdescribe('<Cart />', () => {
+describe('<Cart />', () => {
   let store = {};
 
   beforeAll(() => {
