@@ -22,7 +22,7 @@ Storage.default
   .catch(() => {
     console.info('Storage synicing failed.');
   })
-  .finally(() => {
+  .then(() => {
     const store = configureStore(initialState);
 
     render(

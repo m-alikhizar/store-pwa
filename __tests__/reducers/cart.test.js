@@ -43,7 +43,7 @@ describe('cart reducer', () => {
 
     const promise = Promise.resolve();
 
-    promise.finally = _.noop;
+    promise.then = _.noop;
 
     sinon.stub(Storage, 'purge').returns(promise);
 
