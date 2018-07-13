@@ -1,28 +1,57 @@
+import configureStore from 'redux-mock-store';
 import * as Actions from '../../src/actions';
 import ActionTypes from '../../src/constants/ActionTypes';
 
 describe('actions', () => {
+  let store;
+
+  beforeEach(() => {
+    const mockStore = configureStore();
+    store = mockStore({});
+  });
+
   it('should create an action to get Initial Items', () => {
-    const expected = {
-      type: ActionTypes.GET_INITIAL_ITEMS_REQUEST
-    };
-    expect(Actions.getInitialItemsRequest()).to.deep.equal(expected);
+    store.dispatch(Actions.getInitialItemsRequest());
+
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.GET_INITIAL_ITEMS_REQUEST
+      }
+    ];
+
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to get items request', () => {
     const index = 1;
-    const expected = {
-      type: ActionTypes.GET_ITEMS_REQUEST,
-      index
-    };
-    expect(Actions.getItemsRequest(index)).to.deep.equal(expected);
+
+    store.dispatch(Actions.getItemsRequest(index));
+
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.GET_ITEMS_REQUEST,
+        index
+      }
+    ];
+
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to get items error', () => {
-    const expected = {
-      type: ActionTypes.GET_ITEMS_ERROR
-    };
-    expect(Actions.getItemsError()).to.deep.equal(expected);
+    store.dispatch(Actions.getItemsError());
+
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.GET_ITEMS_ERROR
+      }
+    ];
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to get items receive', () => {
@@ -32,11 +61,18 @@ describe('actions', () => {
         title: 'title'
       }
     ];
-    const expected = {
-      type: ActionTypes.GET_ITEMS_RECEIVE,
-      items
-    };
-    expect(Actions.getItemsReceive(items)).to.deep.equal(expected);
+    const expected = [
+      {
+        type: ActionTypes.GET_ITEMS_RECEIVE,
+        items
+      }
+    ];
+
+    store.dispatch(Actions.getItemsReceive(items));
+
+    const actions = store.getActions();
+
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to set filters', () => {
@@ -46,45 +82,69 @@ describe('actions', () => {
       key: 'price'
     };
 
-    const expected = {
-      type: ActionTypes.SET_FILTERS,
-      ...filters
-    };
+    store.dispatch(Actions.setFilters(filters));
 
-    expect(Actions.setFilters(filters)).to.deep.equal(expected);
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.SET_FILTERS,
+        ...filters
+      }
+    ];
+
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to get item request', () => {
     const id = 1;
 
-    const expected = {
-      type: ActionTypes.GET_ITEM_REQUEST,
-      id
-    };
+    store.dispatch(Actions.getItemRequest(id));
 
-    expect(Actions.getItemRequest(id)).to.deep.equal(expected);
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.GET_ITEM_REQUEST,
+        id
+      }
+    ];
+
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to get item receive', () => {
     const item = [{ id: 1, title: 'name' }];
 
-    const expected = {
-      type: ActionTypes.GET_ITEM_RECEIVE,
-      item
-    };
+    store.dispatch(Actions.getItemReceive(item));
 
-    expect(Actions.getItemReceive(item)).to.deep.equal(expected);
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.GET_ITEM_RECEIVE,
+        item
+      }
+    ];
+
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to get search suggestions', () => {
     const query = 'test';
 
-    const expected = {
-      type: ActionTypes.FETCH_SEARCH_SUGGESTIONS,
-      query
-    };
+    store.dispatch(Actions.getSearchSuggestions(query));
 
-    expect(Actions.getSearchSuggestions(query)).to.deep.equal(expected);
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.FETCH_SEARCH_SUGGESTIONS,
+        query
+      }
+    ];
+
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to Add item to Cart', () => {
@@ -93,11 +153,17 @@ describe('actions', () => {
       title: 'title'
     };
 
-    const expected = {
-      type: ActionTypes.ADD_TO_CART,
-      item
-    };
-    expect(Actions.addToCart(item)).to.deep.equal(expected);
+    store.dispatch(Actions.addToCart(item));
+
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.ADD_TO_CART,
+        item
+      }
+    ];
+    expect(actions).to.deep.equal(expected);
   });
 
   it('should create an action to checkout', () => {
@@ -108,10 +174,16 @@ describe('actions', () => {
       }
     ];
 
-    const expected = {
-      type: ActionTypes.CHECKOUT,
-      items
-    };
-    expect(Actions.checkout(items)).to.deep.equal(expected);
+    store.dispatch(Actions.checkout(items));
+
+    const actions = store.getActions();
+
+    const expected = [
+      {
+        type: ActionTypes.CHECKOUT,
+        items
+      }
+    ];
+    expect(actions).to.deep.equal(expected);
   });
 });
