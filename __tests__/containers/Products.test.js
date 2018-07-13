@@ -3,8 +3,10 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
+import { configureStore as createStore } from '../../src/store';
 import Products from '../../src/containers/Products';
 import ActionTypes from '../../src/constants/ActionTypes';
+import { addToCart, getItemsReceive } from '../../src/actions';
 
 describe('<Products />', () => {
   let store = {};
@@ -51,6 +53,31 @@ describe('<Products />', () => {
     const wrapper = mount(<Products match={match} />, { context: { store } });
 
     expect(spy.callCount).to.equal(1);
+  });
+
+  it('should add item to cart', () => {
+    const store = createStore();
+    store.dispatch(
+      getItemsReceive([
+        {
+          id: 1,
+          name: 'test',
+          quantity: 1,
+          price: 1,
+          img: ''
+        }
+      ])
+    );
+
+    const wrapper = mount(<Products />, { context: { store } });
+
+    const element = wrapper.find('.add-to-cart').at(0);
+
+    expect(store.getState().cart.items.length).to.equal(0);
+
+    element.simulate('click');
+
+    expect(store.getState().cart.items.length).to.equal(1);
   });
 
   it('should have a match snapshot', () => {
