@@ -11,7 +11,7 @@ const cache = {
 
 let productsPromise;
 
-const fetchProducts = () => {
+export const fetchProducts = () => {
   if (!productsPromise) {
     productsPromise = axios
       .get('https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products')
@@ -26,9 +26,11 @@ const fetchProducts = () => {
   return productsPromise;
 };
 
-export const getProductData = id => axios
+export const fetchProduct = id => axios
   .get(`https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products/${id}`)
   .then(unwrap);
+
+export const getProductData = id => fetchProduct(id);
 
 const unwrap = (response) => {
   if (response.status !== 200) {
