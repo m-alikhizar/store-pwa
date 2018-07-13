@@ -97,4 +97,4 @@ export const getSearchSuggestions = query => new Promise((resolve, reject) => {
 });
 
 // FETCHING products data immediately instead of waiting for components to mount.
-productsPromise = fetchProducts();
+// productsPromise = fetchProducts();
