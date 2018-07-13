@@ -7,7 +7,5 @@ export function configureStore(state) {
 
   const store = createStore(reducers, state, middlewares);
 
-  console.log('[LOG] Store State configured.');
-
   return store;
 }

@@ -16,7 +16,6 @@ let initialState = {};
 Storage.default
   .read('cart')
   .then((cart) => {
-    console.log('Storage syncing success.');
     initialState = { cart };
   })
   .catch(() => {
