@@ -6,11 +6,10 @@ import {
   ButtonDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  NavLink
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import { parse, stringify } from 'query-string';
-
 import PropTypes from 'prop-types';
 import { addToCart, setFilters } from '../actions';
 import Item from './Item';
@@ -140,10 +139,13 @@ const Actions = ({ dispatch, item }) => (
       size="sm"
       onClick={() => dispatch(addToCart({ ...item, quantity: 1 }))}
       color="primary"
+      className="add-to-cart"
     >
       Add to Cart
     </Button>
-    <Link to={`/product/${item.id}`}>Details</Link>
+    <NavLink href={`/product/${item.id}`} style={{ display: 'inline' }}>
+      Details
+    </NavLink>
   </div>
 );
 
