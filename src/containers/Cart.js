@@ -82,7 +82,7 @@ class ItemCart extends React.Component {
                   suffix=" AED"
                 />
               </span>
-              <Button size="sm" onClick={() => this.props.dispatch(checkout(this.props.items))}>
+              <Button className="check-out" size="sm" onClick={() => this.props.dispatch(checkout(this.props.items))}>
 
                 Secure Checkout
               </Button>
