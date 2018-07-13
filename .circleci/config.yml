@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    machine:
+      node:
+        version: 8.1.4
     docker:
       # specify the version you desire here
       - image: circleci/node:9.11.1
