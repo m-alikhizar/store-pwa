@@ -3,10 +3,11 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import { configureStore as createStore } from '../../src/store';
-import Products from '../../src/containers/Products';
-import ActionTypes from '../../src/constants/ActionTypes';
-import { addToCart, getItemsReceive } from '../../src/actions';
+import { configureStore as createStore } from '../../../src/store';
+import Products from '../../../src/containers/Products';
+import ActionTypes from '../../../src/constants/ActionTypes';
+import { getItemsReceive } from '../../../src/actions';
+import Storage from '../../../src/helpers/storage';
 
 describe('<Products />', () => {
   let store = {};
@@ -74,6 +75,8 @@ describe('<Products />', () => {
     const element = wrapper.find('.add-to-cart').at(0);
 
     expect(store.getState().cart.items.length).to.equal(0);
+
+    sinon.stub(Storage, 'write').returns(Promise.resolve());
 
     element.simulate('click');
 

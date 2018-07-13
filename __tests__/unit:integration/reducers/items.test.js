@@ -1,11 +1,11 @@
-import items from '../../src/reducers/items';
+import items from '../../../src/reducers/items';
 import {
   getInitialItemsRequest,
   getItemsRequest,
   getItemsError,
   getItemsReceive,
   setFilters
-} from '../../src/actions';
+} from '../../../src/actions';
 
 describe('items reducer', () => {
   it('should return the initial state', () => {

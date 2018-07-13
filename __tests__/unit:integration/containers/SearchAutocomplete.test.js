@@ -3,8 +3,8 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import SearchAutocomplete from '../../src/containers/SearchAutocomplete';
-import ActionTypes from '../../src/constants/ActionTypes';
+import SearchAutocomplete from '../../../src/containers/SearchAutocomplete';
+import ActionTypes from '../../../src/constants/ActionTypes';
 
 describe('<SearchAutocomplete />', () => {
   let store = {};

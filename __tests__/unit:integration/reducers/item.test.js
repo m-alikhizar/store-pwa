@@ -1,5 +1,5 @@
-import item from '../../src/reducers/item';
-import { getItemReceive } from '../../src/actions';
+import item from '../../../src/reducers/item';
+import { getItemReceive } from '../../../src/actions';
 
 describe('item reducer', () => {
   it('should return the initial state', () => {

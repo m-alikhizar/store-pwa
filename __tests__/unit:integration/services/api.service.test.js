@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import * as API from '../../src/services/api.service';
+import * as API from '../../../src/services/api.service';
 
 describe('api.service', () => {
   it('should get products data chunk', () => {

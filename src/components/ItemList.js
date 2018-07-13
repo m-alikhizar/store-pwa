@@ -104,7 +104,7 @@ class ItemList extends React.Component {
         </Alert>
         <div className="row">
           {itemlist.map(item => (
-            <div className="col-lg-4 col-md-6  col-xs-6" key={item.id}>
+            <div className="col-lg-4 col-md-6  col-xs-6 product-item" key={item.id}>
               <div className="mb-4" style={style}>
                 <Item
                   {...item}

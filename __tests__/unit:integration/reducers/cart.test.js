@@ -1,8 +1,8 @@
 import sinon from 'sinon';
 import _ from 'lodash';
-import cart from '../../src/reducers/cart';
-import Storage from '../../src/helpers/storage';
-import { addToCart, checkout } from '../../src/actions';
+import cart from '../../../src/reducers/cart';
+import Storage from '../../../src/helpers/storage';
+import { addToCart, checkout } from '../../../src/actions';
 
 describe('cart reducer', () => {
   it('should return the initial state', () => {

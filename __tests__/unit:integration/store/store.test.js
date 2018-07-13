@@ -1,5 +1,5 @@
-import { configureStore } from '../../src/store/configure-store';
-import { getList } from '../../src/reducers';
+import { configureStore } from '../../../src/store/configure-store';
+import { getList } from '../../../src/reducers';
 
 describe('store', () => {
   it('should create an empty store', () => {

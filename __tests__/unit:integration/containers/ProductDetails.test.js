@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
-import ProductDetails from '../../src/containers/ProductDetails';
+import ProductDetails from '../../../src/containers/ProductDetails';
 
 describe('<ProductDetails />', () => {
   let store = {};

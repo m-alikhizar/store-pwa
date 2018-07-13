@@ -2,7 +2,7 @@ import React from 'react';
 import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Item from '../../src/components/Item';
+import Item from '../../../src/components/Item';
 
 describe('<Item />', () => {
   let wrapper;

@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
-import * as Actions from '../../src/actions';
-import ActionTypes from '../../src/constants/ActionTypes';
+import * as Actions from '../../../src/actions';
+import ActionTypes from '../../../src/constants/ActionTypes';
 
 describe('actions', () => {
   let store;
