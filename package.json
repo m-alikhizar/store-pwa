@@ -62,15 +62,15 @@
     "test:coverage": "jest --coverage",
     "test:snapshot:update": "npm run test -- -u",
     "test:watch": "npm run test -- --watch",
-    "test:cypress": "start-server-and-test start http://localhost:8090 cypress:run",
-    "cypress:run": "cypress run",
-    "cypress:open": "cypress open",
+    "test:e2e": "start-server-and-test start http://localhost:8090 e2e",
+    "e2e": "cypress run",
+    "e2e:open": "cypress open",
     "lint": "eslint .",
     "flow:start": "flow start",
     "flow:stop": "flow stop",
     "flow:status": "flow status",
     "flow:coverage": "flow coverage",
-    "ci": "npm run test & npm run test:cypress & npm run test:coverage"
+    "ci": "npm run test & npm run test:e2e & npm run test:coverage"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setup-test-framework-setup.js",
