@@ -67,7 +67,8 @@
     "flow:start": "flow start",
     "flow:stop": "flow stop",
     "flow:status": "flow status",
-    "flow:coverage": "flow coverage"
+    "flow:coverage": "flow coverage",
+    "ci": "npm run test & npm run cypress:run"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setup-test-framework-setup.js",
