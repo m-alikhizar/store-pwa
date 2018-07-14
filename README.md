@@ -2,41 +2,36 @@
 
 [![CircleCI](https://circleci.com/gh/khizar-ali/Store.svg?style=svg)](https://circleci.com/gh/khizar-ali/Store)
 
-# How to setup
+## Run the application using Docker
+1. [Build the image](#1-build-the-image)
+2. [Run the image](#2-run-the-image)
 
-**Prerequisites**
+## Prerequisites:
+1. [Create Docker account](https://cloud.docker.com/)
+ 
+2. [Install Docker CLI](https://docs.docker.com/install/)
 
+3. [Retrieve and save your Docker user id](https://cloud.docker.com/)
+
+### 1. Build the image
+
+In a terminal, run:
 ```
-node ^9.11
-npm ^6.0.1
-git ^2.15.2
-```
-
-**Setup**
-
----
-
-1.  Setup the repository.
-
-```
-git clone https://github.com/khizar-ali/Store.git
+$ docker build -t $docker_username/Store .
 ```
 
-2.  Go to the repository `cd Store` and run
+Your image should be listed by running:
 
 ```
-git checkout master
-npm install
+$ docker images
 ```
 
-3.  Run the application
-    `npm start`
+### 2. Run the image
 
-This will navigate chrome to `http://localhost:8090/`
+In a terminal, run:
 
-# Note
+```
+$ docker run -p 3000:3000 -d $docker_username/Store
+```
 
-- Bug fixes - If you find a bug, let me know either contacting me or using GitHub issues.
-- New Features - Tell me the problem/feature request either contacting me or in a new GitHub issue.
-
-Also I would also love any feedback please let me know.
+You can now access the application at http://localhost:8090
