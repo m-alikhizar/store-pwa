@@ -16,7 +16,10 @@ git ^2.15.2
 git clone https://github.com/khizar-ali/Store.git
 ```
 2. Go to the repository `cd Store` and run
-```npm install```
+```
+git checkout master
+npm install
+```
 3. Run the application
 ```npm start```
 
@@ -31,4 +34,4 @@ This will navigate chrome to `http://localhost:8090/`
 *  Bug fixes    -  If you find a bug, let me know either contacting me or using GitHub issues.
 *  New Features    -  Tell me the problem/feature request either contacting me or in a new GitHub issue.
 
-I would also love any feedback or if you want to share any enhancement/feature request please let me know.
+Also I would also love any feedback please let me know.

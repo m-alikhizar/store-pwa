@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Products /> should have a match snapshot 1`] = `
+<Products
+  dispatch={[Function]}
+  dispatchGetItemsRequest={[Function]}
+  getItemsRequest={[Function]}
+  itemlist={Array []}
+  items={
+    Object {
+      "list": Array [],
+      "meta": Object {},
+    }
+  }
+  meta={Object {}}
+/>
+`;

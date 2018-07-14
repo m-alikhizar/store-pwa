@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cart /> should have a match snapshot 1`] = `
+<Cart
+  cart={
+    Object {
+      "items": Array [],
+    }
+  }
+  dispatch={[Function]}
+  items={Array []}
+/>
+`;

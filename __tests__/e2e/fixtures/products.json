@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Awesome product 1",
+    "img": "https://picsum.photos/300/300/?image=1",
+    "price": 200
+  },
+  {
+    "id": 2,
+    "name": "Awesome product 2",
+    "img": "https://picsum.photos/300/300/?image=2",
+    "price": 456
+  },
+  {
+    "id": 3,
+    "name": "Awesome product 3",
+    "img": "https://picsum.photos/300/300/?image=3",
+    "price": 234
+  },
+  {
+    "id": 4,
+    "name": "Awesome product 4",
+    "img": "https://picsum.photos/300/300/?image=4",
+    "price": 123
+  },
+  {
+    "id": 5,
+    "name": "Awesome product 5",
+    "img": "https://picsum.photos/300/300/?image=5",
+    "price": 765
+  },
+  {
+    "id": 6,
+    "name": "Awesome product 6",
+    "img": "https://picsum.photos/300/300/?image=6",
+    "price": 786
+  },
+  {
+    "id": 7,
+    "name": "Awesome product 7",
+    "img": "https://picsum.photos/300/300/?image=7",
+    "price": 564
+  },
+  {
+    "id": 8,
+    "name": "Awesome product 8",
+    "img": "https://picsum.photos/300/300/?image=8",
+    "price": 345
+  },
+  {
+    "id": 9,
+    "name": "Awesome product 9",
+    "img": "https://picsum.photos/300/300/?image=9",
+    "price": 453
+  },
+  {
+    "id": 10,
+    "name": "Awesome product 10",
+    "img": "https://picsum.photos/300/300/?image=10",
+    "price": 276
+  },
+  {
+    "id": 11,
+    "name": "Awesome product 11",
+    "img": "https://picsum.photos/300/300/?image=11",
+    "price": 234
+  },
+  {
+    "id": 12,
+    "name": "Awesome product 12",
+    "img": "https://picsum.photos/300/300/?image=12",
+    "price": 567
+  },
+  {
+    "id": 13,
+    "name": "Awesome product 13",
+    "img": "https://picsum.photos/300/300/?image=13",
+    "price": 456
+  },
+  {
+    "id": 14,
+    "name": "Awesome product 14",
+    "img": "https://picsum.photos/300/300/?image=14",
+    "price": 432
+  },
+  {
+    "id": 15,
+    "name": "Awesome product 15",
+    "img": "https://picsum.photos/300/300/?image=15",
+    "price": 346
+  },
+  {
+    "id": 16,
+    "name": "Awesome product 16",
+    "img": "https://picsum.photos/300/300/?image=16",
+    "price": 312
+  },
+  {
+    "id": 17,
+    "name": "Awesome product 17",
+    "img": "https://picsum.photos/300/300/?image=17",
+    "price": 234
+  },
+  {
+    "id": 18,
+    "name": "Awesome product 18",
+    "img": "https://picsum.photos/300/300/?image=18",
+    "price": 123
+  },
+  {
+    "id": 19,
+    "name": "Awesome product 19",
+    "img": "https://picsum.photos/300/300/?image=19",
+    "price": 934
+  },
+  {
+    "id": 20,
+    "name": "Awesome product 20",
+    "img": "https://picsum.photos/300/300/?image=20",
+    "price": 245
+  }
+]

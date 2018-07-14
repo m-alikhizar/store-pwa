@@ -1,21 +1,14 @@
 import React from 'react';
-
-// import VisibleItemList from '../containers/VisibleItemList'
-// import AddItem from '../containers/AddItem'
-// import PropTypes from 'prop-types'
-
 import { Container, Col, Row, Button, Jumbotron } from 'reactstrap';
-
-import Products from '../containers/Products';
-import AppBar from '../containers/AppBar';
-import ProductDetails from '../containers/ProductDetails';
-
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
+import ProductDetails from '../containers/ProductDetails';
+import Products from '../containers/Products';
+import Header from './Header';
 
 const App = () => {
   return (
     <Container fluid={true}>
-      <Route path='/' component={AppBar}/>
+      <Route path='/' component={Header}/>
       <Row>
         <Col lg={12}>
           <Switch>

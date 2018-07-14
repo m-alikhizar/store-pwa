@@ -1,9 +1,5 @@
 import ActionTypes from '../constants/ActionTypes';
-import { QueryTransformer, sort } from '../helpers/utils';
 import item from './item';
-
-let _items = [];
-let _allItems = [];
 
 const defaultState = {
   meta: { key: 'price' },
@@ -11,78 +7,51 @@ const defaultState = {
 };
 
 const items = (state = defaultState, action) => {
-  switch(action.type) {
+  switch (action.type) {
+    case ActionTypes.GET_INITIAL_ITEMS_REQUEST:
+    case ActionTypes.GET_ITEMS_REQUEST: {
+      const { meta } = state;
 
-    case ActionTypes.ALL_ITEMS:
-    {
-      _allItems = [...action.items];
+      meta.loading = true;
+      meta.error = false;
 
-      return state;
+      return { ...state, meta };
     }
-    case ActionTypes.APPLY_PRODUCTS_UPDATE:
-    {
 
-      _items = action.items.map(i => item({}, { type: ActionTypes.ADD_ITEM, item: i }));
+    case ActionTypes.GET_ITEMS_ERROR: {
+      const { meta } = state;
 
-      const { order, key } = state.meta;
+      meta.loading = false;
+      meta.error = true;
 
-      if(order && key) {
-        _items = sort(_items, order, key);
-      }
-
-      return { ...state, list: _items };
+      return { ...state, meta };
     }
-    case ActionTypes.APPLY_SEARCH_CRITERIA:
-    {
 
-      const q = action.query.trim();
+    case ActionTypes.GET_ITEMS_RECEIVE: {
+      const newItems = action.items.map(i => item({}, { type: ActionTypes.GET_ITEM_RECEIVE, item: i }));
 
-      const meta = { ...state.meta };
+      const { list } = state;
 
-      if(q) {
-        const matcher = new QueryTransformer(q);
+      const { meta } = state;
 
-        let filtered = _allItems.filter(p => p.name.match(matcher));
+      meta.loading = false;
+      meta.error = false;
 
-        meta.query = action.query;
+      meta.lastIdx = list.length + newItems.length;
 
-        const { order, key } = state.meta;
-
-        if(order && key) {
-          filtered = sort(filtered, order, key);
-        }
-
-        return { ...state, meta, list: filtered };
-      } else {
-
-        meta.query = '';
-
-        return { ...state, meta, list: _items };
-      }
+      return { ...state, meta, list: [...list, ...newItems] };
     }
-    case ActionTypes.APPLY_SORTING:
-    {
 
-      const SORT_TYPES =  { ASC: 'ASC', DESC: 'DESC' };
+    case ActionTypes.SET_FILTERS: {
+      const { meta } = state;
+      const { query, order, key } = action;
 
-      const order = SORT_TYPES[action.order];
+      meta.query = query;
+      meta.lastIdx = 0;
+      meta.order = order;
+      meta.key = key || 'price';
 
-      const { key } = action;
-
-      if(order && key) {
-
-        const list = sort(state.list, order, key);
-
-        const meta = { ...state.meta, order, key };
-
-        return { ...state, meta, list };
-
-      } else {
-
-        const meta = { ...state.meta, order: '' };
-
-        return { ...state, meta };
-      }
+      return { ...state, meta, list: [] };
     }
     default:
       return state;

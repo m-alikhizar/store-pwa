@@ -1,3 +1,4 @@
+/* @flow */
 import ActionTypes from '../constants/ActionTypes';
 import Storage from '../helpers/storage';
 
@@ -7,52 +8,41 @@ const defaultState = {
 };
 
 const cart = (state = defaultState, action) => {
+  switch (action.type) {
+    case ActionTypes.ADD_TO_CART: {
+      const { items } = state;
 
-  switch(action.type) {
+      const { item } = action;
 
-    case ActionTypes.ADD_TO_CART:
+      const atIdx = items.findIndex(i => i.id === item.id);
 
-      const items = state.items;
-      const item = {
-        ...action.item,
-        quantity: action.quantity
-      };
-
-      const atIdx = items.findIndex(it => it.id === item.id);
-
-      if(atIdx != -1) {
+      if (atIdx !== -1) {
         items[atIdx].quantity += item.quantity;
       } else {
         items.push(item);
       }
 
-      state.price = items.reduce((total, i) => ((i.price * i.quantity) + total), 0);
-      state.count = items.reduce((count, i) => (i.quantity + count), 0);
+      const newState = {
+        items,
+        price: items.reduce((total, i) => i.price * i.quantity + total, 0),
+        count: items.reduce((total, i) => i.quantity + total, 0)
+      };
 
-      const newState = { ...state, items };
-
-      Storage.write('cart', JSON.stringify(newState))
-      .then(() => {
-        console.log('Storage syncing success.');
-      })
-      .catch(() => {
-        console.log('Storage syncing failed.');
-      });
+      Storage.write('cart', JSON.stringify(newState));
 
       return newState;
+    }
+    case ActionTypes.CHECKOUT: {
+      Storage.purge('cart');
 
-    case ActionTypes.CHECKOUT:
-
-      Storage.purge('cart', JSON.stringify(newState))
-      .finally(() => {
-        location.href = 'https://www.google.com';
-      });
-
-      return state;
-
+      return {
+        items: [],
+        count: 0
+      };
+    }
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default cart;

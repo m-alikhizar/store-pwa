@@ -1,20 +1,25 @@
 import React from 'react';
 import Autocomplete from 'react-autocomplete';
-import { connect } from 'react-redux';
-import { Container, Input } from 'reactstrap';
-import { getSearchSuggestions, applySearchCriteria } from '../actions';
-import _ from 'lodash';
-import styles from './SearchAutocompleteStyles.css';
+import { Container } from 'reactstrap';
 import { parse, stringify } from 'query-string';
+import _ from 'lodash';
+import { connect } from '../decorators';
+import { setFilters, getSearchSuggestions } from '../actions';
+import styles from '../styles/SearchAutocomplete.css';
 
+@connect()
 
-class Search extends React.Component {
+/*
+ * Search Autocomplete
+ */
+export default class SearchAutocomplete extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: ''
-    }
+      value: '',
+      suggestions: []
+    };
 
     this.dispatch = props.dispatch;
 
@@ -28,16 +33,16 @@ class Search extends React.Component {
   componentDidMount() {
     const { search } = parse(location.search);
 
-    if(search) {
+    if (search) {
       this.setState({ value: search });
-      this.dispatch(applySearchCriteria(search));
+      this.dispatch(setFilters({ query: search }));
     }
   }
 
   onKeyDown(e) {
     const val = e.target.value;
 
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       this.onSelect(val);
     }
   }
@@ -50,48 +55,40 @@ class Search extends React.Component {
     this.query(val);
   }
 
-  onSelect(val){
-    if(val) {
+  onSelect(val) {
+    if (val) {
       this.setState({ value: val });
-      location.href = '/?' + stringify({ search: val });
+      location.href = `/?${stringify({ search: val })}`;
     } else {
       location.search = '';
     }
   }
 
   query(str) {
-    this.dispatch(getSearchSuggestions(str));
+    this.dispatch(getSearchSuggestions(str)).then((suggestions) => {
+      this.setState({ suggestions });
+    });
   }
 
-  render( ) {
-    const renderItemComponent = (item, hovered) =>
+  render() {
+    const renderItemComponent = (item, hovered) => (
       <div key={item.key} style={{ background: hovered && '#e0e0e0' }}>
         {item.label}
       </div>
+    );
 
     return (
       <Container className={styles.wrapper}>
         <Autocomplete
-            getItemValue={item => item.label}
-            items={this.props.suggestions}
-            inputProps={{ onKeyDown: this.onKeyDown, placeholder:'Search' }}
-
-            renderItem={renderItemComponent}
-            value={this.state.value}
-            onChange={this.onChange}
-            onSelect={this.onSelect}
+          getItemValue={item => item.label}
+          items={this.state.suggestions}
+          inputProps={{ onKeyDown: this.onKeyDown, placeholder: 'Search' }}
+          renderItem={renderItemComponent}
+          value={this.state.value}
+          onChange={this.onChange}
+          onSelect={this.onSelect}
         />
       </Container>
-    )
+    );
   }
 }
-
-const mapStateToProps = (store) => {
-  return {
-    suggestions: store.search.suggestions,
-  };
-}
-
-const SearchAutocomplete = connect(mapStateToProps)(Search)
-
-export default SearchAutocomplete

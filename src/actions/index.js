@@ -1,64 +1,51 @@
 import ActionTypes from '../constants/ActionTypes';
 
-export const allItems = (items) => {
-  return {
-    type: ActionTypes.ALL_ITEMS,
-    items
-  }
-}
+export const getInitialItemsRequest = () => ({
+  type: ActionTypes.GET_INITIAL_ITEMS_REQUEST
+});
 
-export const initialItems = (index) => {
-  return {
-    type: ActionTypes.INITIAL_ITEMS,
-    index
-  }
-}
+export const getItemsRequest = index => ({
+  type: ActionTypes.GET_ITEMS_REQUEST,
+  index
+});
 
-export const addItem = (id) => {
-  return {
-    type: ActionTypes.ADD_ITEM,
-    id
-  }
-}
+export const getItemsError = () => ({
+  type: ActionTypes.GET_ITEMS_ERROR
+});
 
-export const applyProductsUpdate = (items) => {
-  return {
-    type: ActionTypes.APPLY_PRODUCTS_UPDATE,
-    items
-  }
-}
+export const getItemsReceive = items => ({
+  type: ActionTypes.GET_ITEMS_RECEIVE,
+  items
+});
 
-export const applySearchCriteria = (query) => {
-  return {
-    type: ActionTypes.APPLY_SEARCH_CRITERIA,
-    query: query
-  }
-}
+export const setFilters = ({ query = '', order = '', key = '' }) => ({
+  type: ActionTypes.SET_FILTERS,
+  query,
+  order,
+  key
+});
 
-export const getSearchSuggestions = (query) => {
-  return {
-    type: ActionTypes.FETCH_SEARCH_SUGGESTIONS,
-    query: query
-  }
-}
+export const getItemRequest = id => ({
+  type: ActionTypes.GET_ITEM_REQUEST,
+  id
+});
 
-export const addToCart = (props) => {
-  return {
-    type: ActionTypes.ADD_TO_CART,
-    ...props
-  }
-}
+export const getItemReceive = item => ({
+  type: ActionTypes.GET_ITEM_RECEIVE,
+  item
+});
 
-export const checkout = (items) => {
-  return {
-    type: ActionTypes.CHECKOUT,
-    items
-  }
-}
+export const getSearchSuggestions = query => ({
+  type: ActionTypes.FETCH_SEARCH_SUGGESTIONS,
+  query
+});
 
-export const sort = (order, key) => {
-  return {
-    type: ActionTypes.APPLY_SORTING,
-    order, key
-  }
-}
+export const addToCart = item => ({
+  type: ActionTypes.ADD_TO_CART,
+  item
+});
+
+export const checkout = items => ({
+  type: ActionTypes.CHECKOUT,
+  items
+});

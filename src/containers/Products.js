@@ -1,46 +1,57 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import ItemList from '../components/ItemList';
-import { initialItems } from '../actions';
-import { withSubscription, withPaginated, withLoading, withInfiniteScroll } from '../high-order-components';
 import { compose } from 'recompose';
+import { connect } from '../decorators';
+import ItemList from '../components/ItemList';
+import Paginated from '../hoc/with/Paginated';
+import Loading from '../hoc/with/Loading';
+import InfiniteScroll from '../hoc/with/InfiniteScroll';
+import { getInitialItemsRequest, getItemsRequest } from '../actions';
 
-const paginatedCondition = props => !props.loading && props.error;
+const paginatedCondition = props => !props.meta.loading && props.meta.error;
 
-const loadingCondition = props => props.loading;
+const loadingCondition = props => props.meta.loading;
 
 const infiniteScrollCondition = props =>
-  ((window.innerHeight + window.scrollY) > (document.body.offsetHeight - 10)
-  && props.itemlist.length);
+  // eslint-disable-next-line
+  window.innerHeight + window.scrollY > document.body.offsetHeight - 10 &&
+  props.itemlist.length
+  && !props.meta.loading
+  && !props.meta.error;
 
 const AdvancedList = compose(
-    withInfiniteScroll(infiniteScrollCondition),
-    withPaginated(paginatedCondition),
-    withLoading(loadingCondition),
-  )(ItemList);
+  InfiniteScroll(infiniteScrollCondition),
+  Loading(loadingCondition),
+  Paginated(paginatedCondition)
+)(ItemList);
 
-const last = (items = []) => _.last(items) || {};
-
-const mapStateToProps = state => ({
+@connect(
+  state => ({
     items: state.items,
     itemlist: state.items.list,
     meta: state.items.meta
-  });
-
-const mapDispatchToProps = dispatch => ({
+  }),
+  dispatch => ({
     dispatch,
-    dispatchPaginatedSearch(index = 0) {
-      return dispatch(initialItems(index))
+    dispatchGetItemsRequest(index) {
+      return dispatch(getItemsRequest(index));
     }
-  });
-
-const mergeProps = (props, otherProps, ownProps) => ({
+  }),
+  (props, otherProps, ownProps) => ({
     ...props,
     ...otherProps,
     ...ownProps,
-    onPaginatedSearch: () => otherProps.dispatchPaginatedSearch(last(props.itemlist).id)
-  });
+    getItemsRequest: () => otherProps.dispatchGetItemsRequest(props.meta.lastIdx)
+  })
+)
+export default class Products extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(getInitialItemsRequest());
+  }
 
-const Products = connect(mapStateToProps, mapDispatchToProps, mergeProps)(AdvancedList);
+  render() {
+    const newProps = { ...this.props, ...this.state };
 
-export default Products;
+    return <AdvancedList {...newProps} />;
+  }
+}
