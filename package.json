@@ -59,6 +59,7 @@
     "start:hot": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:snapshot:update": "npm run test -- -u",
     "test:watch": "npm run test -- --watch",
     "test:cypress": "start-server-and-test start http://localhost:8090 cypress:run",
@@ -69,7 +70,7 @@
     "flow:stop": "flow stop",
     "flow:status": "flow status",
     "flow:coverage": "flow coverage",
-    "ci": "npm run test & npm run test:cypress"
+    "ci": "npm run test & npm run test:cypress & npm run test:coverage"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setup-test-framework-setup.js",
