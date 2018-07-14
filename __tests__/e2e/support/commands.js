@@ -23,3 +23,31 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('seedAndVisit', () => {
+  cy.server();
+
+  cy.route(
+    'GET',
+    'https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products',
+    'fixture:products'
+  );
+
+  cy.visit('/');
+});
+
+Cypress.Commands.add('seedProductAndVisit', () => {
+  cy.server();
+
+  cy.route(
+    'GET',
+    'https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products/1',
+    'fixture:product'
+  );
+
+  cy.visit('/product/1');
+});
+
+Cypress.Commands.add('clearIndexedDB', () => {
+  indexedDB.deleteDatabase('database');
+});
