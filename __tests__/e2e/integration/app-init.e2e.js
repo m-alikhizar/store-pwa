@@ -1,21 +1,15 @@
 describe('App initialization', () => {
-  // it('should have a header', () => {
-  //   cy.visit('/');
+  it('Loads products on page load', () => {
+    cy.clearIndexedDB();
+    cy.seedAndVisit();
+    cy.get('.product-item').should('have.length', 10);
+  });
 
-  //   cy.get('.navbar-brand').should('have.text', 'Store');
-  // });
+  it('Should have an header', () => {
+    cy.get('.navbar-brand').should('have.text', 'Store');
+  });
 
-  it.only('Loads products on page load', () => {
-    cy.server();
-
-    cy.route(
-      'GET',
-      'https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products',
-      'fixture:products'
-    );
-
-    cy.visit('/');
-
-    cy.get('.product-item').should('have.length', 5);
+  it('Should have 0 in cart initially', () => {
+    cy.get('#popover-cart i').should('text', '0');
   });
 });
