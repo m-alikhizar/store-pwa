@@ -7,7 +7,10 @@ describe('Search suite', () => {
 
   it('should populate items on search', () => {
     cy.seedAndVisit();
+
     cy.get('input').type('1{enter}');
+
+    cy.url().should('contain', 'search=1');
 
     cy.get('.product-item').should('have.length', 1);
   });

@@ -70,6 +70,8 @@ describe('Products suite', () => {
       .eq(0)
       .click();
 
+    cy.url().should('contain', 'order=ASC');
+
     cy.get('.btn-group .btn.btn-outline-secondary:not(.dropdown-toggle)')
       .eq(0)
       .should('have.attr', 'class')
