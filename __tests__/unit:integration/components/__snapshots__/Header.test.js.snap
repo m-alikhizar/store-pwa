@@ -90,7 +90,7 @@ exports[`<Header /> should have a match snapshot 1`] = `
         <NavLink
           tag="a"
         >
-          <Connect(ItemCart) />
+          <Connect(Cart) />
         </NavLink>
       </NavItem>
     </Nav>

@@ -2,6 +2,7 @@
 
 exports[`<Item /> should match snapshot 1`] = `
 <div
+  className="product-item"
   style={
     Object {
       "padding": "15px",
