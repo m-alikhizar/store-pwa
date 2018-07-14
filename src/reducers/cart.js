@@ -33,10 +33,8 @@ const cart = (state = defaultState, action) => {
       return newState;
     }
     case ActionTypes.CHECKOUT: {
-      Storage.purge('cart').then(() => {
-        // eslint-disable-next-line
-        location.href = 'https://www.google.com';
-      });
+      Storage.purge('cart');
+
       return {
         items: [],
         count: 0

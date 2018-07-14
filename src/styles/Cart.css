@@ -13,7 +13,7 @@
 }
 
 .bag:before {
-  content: '';
+  content: "";
   border: 1px solid #000;
   background: #0000;
   width: 14px;
@@ -24,7 +24,6 @@
   left: 5px;
   z-index: -1;
 }
-
 
 .popover {
   background: transparent;
@@ -53,14 +52,13 @@
 }
 
 .body > div:not(:last-child):after {
-  content: '';
+  content: "";
   display: block;
   width: 100px;
   height: 1px;
   background: #e0e0e0;
   margin: 12px;
 }
-
 
 .body > div img {
   width: 64px !important;
@@ -82,13 +80,14 @@
   font-weight: bold;
 }
 
-.actions > button {
+.actions > a {
   background: #800080;
   text-decoration: none;
-  color: #fff;
+  color: #fff !important;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 10px;
   position: absolute;
   right: 8px;
+  display: inline;
 }

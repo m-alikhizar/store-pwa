@@ -1,14 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NumberFormat from 'react-number-format';
-import {
-  Button, Popover, PopoverHeader, PopoverBody
-} from 'reactstrap';
+import { NavLink, Popover, PopoverBody } from 'reactstrap';
 import Item from '../components/Item';
 import { checkout } from '../actions';
 import styles from '../styles/Cart.css';
 
-class ItemCart extends React.Component {
+@connect(
+  store => ({
+    cart: store.cart,
+    items: store.cart.items
+  }),
+  dispatch => ({ dispatch })
+)
+export default class Cart extends React.Component {
   constructor(props) {
     super(props);
 
@@ -46,9 +51,7 @@ class ItemCart extends React.Component {
       <div onMouseEnter={this.onMouseEnter}>
         <div id="popover-cart" onClick={this.toggle} onMouseLeave={this.onMouseLeave}>
           <div className={styles.bag}>
-            <i>
-              {this.props.cart.count}
-            </i>
+            <i>{this.props.cart.count}</i>
           </div>
         </div>
         <Popover
@@ -71,10 +74,8 @@ class ItemCart extends React.Component {
 
           {this.props.items.length != 0 && (
             <div className={styles.actions}>
-              <span>
-
-                TOTAL
-                {' '}
+              <span className="total-price">
+                TOTAL{' '}
                 <NumberFormat
                   displayType="text"
                   value={this.props.cart.price}
@@ -82,10 +83,14 @@ class ItemCart extends React.Component {
                   suffix=" AED"
                 />
               </span>
-              <Button className="check-out" size="sm" onClick={() => this.props.dispatch(checkout(this.props.items))}>
-
+              <NavLink
+                className="check-out"
+                size="sm"
+                onClick={() => this.props.dispatch(checkout(this.props.items))}
+                href="https://google.com"
+              >
                 Secure Checkout
-              </Button>
+              </NavLink>
             </div>
           )}
         </Popover>
@@ -97,22 +102,7 @@ class ItemCart extends React.Component {
 const ItemActions = ({ quantity }) => (
   <div>
     {' '}
-
     Quantity:
     {quantity}
   </div>
 );
-
-const mapStateToProps = store => ({
-  cart: store.cart,
-  items: store.cart.items
-});
-
-const mapDispatchToProps = dispatch => ({ dispatch });
-
-const Cart = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ItemCart);
-
-export default Cart;
