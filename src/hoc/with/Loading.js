@@ -6,7 +6,7 @@ const Loading = conditionFn => Component => props => (
     <Component {...props} />
     <div style={{ height: '90px' }}>
       {conditionFn(props) && (
-        <Alert className="text-center" style={{ fontSize: '32px' }} color="light ">
+        <Alert className="text-center loading" style={{ fontSize: '32px' }} color="light ">
           Loading...
         </Alert>
       )}
