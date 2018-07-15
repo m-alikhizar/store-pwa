@@ -1,6 +1,10 @@
 # Extending image
 FROM node:9.11.2-jessie
 
+RUN npm install npm@6.2.0
+RUN rm -rf /usr/local/lib/node_modules/npm
+RUN mv node_modules/npm /usr/local/lib/node_modules/npm
+
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
