@@ -1,5 +1,5 @@
 # Extending image
-FROM node:carbon
+FROM node:9.11.2-jessie
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -29,4 +29,4 @@ ENV PUBLIC_PATH "/"
 RUN npm run start:hot
 
 # Main command
-CMD [ "npm", "run", "start:hot", "start", "test", "build", "test:coverage", "test:e2e", "ci" ]
+CMD [ "npm", "run", "start:hot" ]

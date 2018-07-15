@@ -1,5 +1,5 @@
 # Extending image
-FROM node:carbon
+FROM node:node:9.11.2-jessie
 
 # Create app directory
 RUN mkdir -p /usr/src/app
