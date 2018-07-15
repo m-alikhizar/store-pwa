@@ -30,7 +30,7 @@ ENV NODE_ENV development
 ENV PORT 8090
 ENV PUBLIC_PATH "/"
 
-RUN npm run start:hot
+RUN npm run start
 
 # Main command
-CMD [ "npm", "run", "start:hot" ]
+CMD [ "npm", "run", "start" ]

@@ -9,15 +9,15 @@ node {
       sh 'docker -v'
       sh 'printenv'
     }
-    stage('Build Docker test'){
-      sh 'docker build -t store -f Dockerfile.test --no-cache . '
-    }
-    stage('Docker test'){
-      sh 'docker run --rm store'
-    }
-    stage('Clean Docker test'){
-      sh 'docker rmi store'
-    }
+    // stage('Build Docker test'){
+    //   sh 'docker build -t store -f Dockerfile.test --no-cache . '
+    // }
+    // stage('Docker test'){
+    //   sh 'docker run --rm store'
+    // }
+    // stage('Clean Docker test'){
+    //   sh 'docker rmi store'
+    // }
     stage('Deploy'){
       // if(env.BRANCH_NAME == 'master'){
         sh 'docker build -t store --no-cache .'
