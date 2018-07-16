@@ -6,7 +6,7 @@
 
 1.  [Install Docker CLI](https://docs.docker.com/install/)
 
-## Run the application
+## [Run the application](https://hub.docker.com/r/khizarali/store/)
 
 In a terminal, run:
 
