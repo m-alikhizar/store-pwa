@@ -36,5 +36,4 @@ jobs:
 
       # run tests!
       - run: yarn ci
-      - run: $(yarn bin)/cypress run
-
+      - run: yarn test-junit
