@@ -12,7 +12,7 @@ In a terminal, run:
 
 ```
 $ docker pull khizarali/store
-$ docker run -d -p 8090:8090 --name store khizarali/store:ghq
+$ docker run -d -p 8090:8090 --name store khizarali/store:latest
 ```
 
 You can now access the application at http://localhost:8090
