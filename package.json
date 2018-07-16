@@ -55,7 +55,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --hot",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --host 0.0.0.0",
     "build": "webpack --mode production",
     "test": "jest",
     "test:coverage": "jest --coverage",
