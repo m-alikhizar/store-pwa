@@ -36,4 +36,4 @@ jobs:
 
       # run tests!
       - run: yarn ci
-      - run: $(yarn bin)/cypress run
+      - run: $(yarn bin)/cypress run --record --key <record_key>
