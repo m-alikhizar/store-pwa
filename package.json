@@ -55,8 +55,8 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "start:hot": "webpack-dev-server --mode development --open --hot",
+    "dev": "webpack-dev-server --mode development --open --hot",
+    "start": "webpack-dev-server --host 0.0.0.0",
     "build": "webpack --mode production",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -70,7 +70,7 @@
     "flow:stop": "flow stop",
     "flow:status": "flow status",
     "flow:coverage": "flow coverage",
-    "ci": "npm run test & npm run test:e2e & npm run test:coverage"
+    "ci": "npm run test & npm run test:coverage & npm run test:e2e"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setup-test-framework-setup.js",

@@ -1,42 +1,18 @@
 # Store [WIP]
 
-[![CircleCI](https://circleci.com/gh/khizar-ali/Store.svg?style=svg)](https://circleci.com/gh/khizar-ali/Store)
+[![CircleCI](https://circleci.com/gh/khizar-ali/store.svg?style=svg)](https://circleci.com/gh/khizar-ali/store)
 
-# How to setup
+## Prerequisites:
 
-**Prerequisites**
+1.  [Install Docker CLI](https://docs.docker.com/install/)
 
-```
-node ^9.11
-npm ^6.0.1
-git ^2.15.2
-```
+## [Run the application](https://hub.docker.com/r/khizarali/store/)
 
-**Setup**
-
----
-
-1.  Setup the repository.
+In a terminal, run:
 
 ```
-git clone https://github.com/khizar-ali/Store.git
+$ docker pull khizarali/store
+$ docker run -d -p 8090:8090 --name store khizarali/store:ghq
 ```
 
-2.  Go to the repository `cd Store` and run
-
-```
-git checkout master
-npm install
-```
-
-3.  Run the application
-    `npm start`
-
-This will navigate chrome to `http://localhost:8090/`
-
-# Note
-
-- Bug fixes - If you find a bug, let me know either contacting me or using GitHub issues.
-- New Features - Tell me the problem/feature request either contacting me or in a new GitHub issue.
-
-Also I would also love any feedback please let me know.
+You can now access the application at http://localhost:8090

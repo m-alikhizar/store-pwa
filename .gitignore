@@ -4,12 +4,14 @@
 /node_modules
 /server
 
+# jenkins
+/jenkins/jenkins_home
 
 # testing
 /coverage
 
 # production
-/build
+/dist
 
 # misc
 .DS_Store
