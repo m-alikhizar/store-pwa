@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:9.11-browsers
-      - image: cypress/base:6
+      - image: cypress/base:8
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -35,10 +35,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn ci
+      - run:
+        yarn ci
+        $(yarn bin)/cypress run
 
-      - store_test_results:
-          path: test-results
-
-      - store_artifacts:
-          path: artifacts
