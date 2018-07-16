@@ -21,9 +21,9 @@ node {
     stage('Deploy'){
       // if(env.BRANCH_NAME == 'master'){
         sh 'docker build -t store --no-cache .'
-        sh 'docker tag store localhost:8090/store'
-        sh 'docker push localhost:8090/store'
-        sh 'docker rmi -f store localhost:8090/store'
+        sh 'docker tag store localhost:5000/store'
+        sh 'docker push localhost:5000/store'
+        sh 'docker rmi -f store localhost:5000/store'
       // }
     }
   }
