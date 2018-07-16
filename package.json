@@ -70,7 +70,7 @@
     "flow:stop": "flow stop",
     "flow:status": "flow status",
     "flow:coverage": "flow coverage",
-    "ci": "npm run test & npm run test:coverage & npm run e2e"
+    "ci": "npm run test & npm run test:coverage & npm run test:e2e"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setup-test-framework-setup.js",
