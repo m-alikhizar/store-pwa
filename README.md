@@ -15,4 +15,4 @@ $ docker pull khizarali/store
 $ docker run -d -p 8090:8090 --name store khizarali/store:latest
 ```
 
-You can now access the application at http://localhost:8090
+Navigate to http://localhost:8090
