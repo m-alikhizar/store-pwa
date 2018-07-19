@@ -19,12 +19,12 @@ node {
     //   sh 'docker rmi store'
     // }
     stage('Deploy'){
-      // if(env.BRANCH_NAME == 'master'){
+      if(env.BRANCH_NAME == 'master'){
         sh 'docker build -t store --no-cache .'
         sh 'docker tag store localhost:5000/store'
         sh 'docker push localhost:5000/store'
         sh 'docker rmi -f store localhost:5000/store'
-      // }
+      }
     }
   }
   catch (err) {
