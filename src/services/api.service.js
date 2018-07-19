@@ -1,5 +1,5 @@
 import axios from 'axios';
-import _ from 'lodash';
+import clone from 'lodash.clone';
 import { QueryTransformer, sort } from '../helpers/utils';
 import { Suggestion } from '../models';
 
@@ -17,7 +17,7 @@ export const fetchProducts = () => {
       .get('https://my-json-server.typicode.com/carlosrobles/simple-api-mock/products')
       .then(unwrap)
       .then((products) => {
-        cache.products = _.clone(products);
+        cache.products = clone(products);
         return products;
       })
       .catch(() => (productsPromise = null));
@@ -60,7 +60,7 @@ const transform = (products = [], query = '', order = '', key = '') => {
 
 export const getProductsData = (index, { query, order, key }) => new Promise((resolve, reject) => {
   if (cache.products.length) {
-    const chunk = transform(_.clone(cache.products), query, order, key).slice(
+    const chunk = transform(clone(cache.products), query, order, key).slice(
       index,
       PRODUCT_FETCH_LIMIT + index
     );
