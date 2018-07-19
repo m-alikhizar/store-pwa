@@ -1,13 +1,18 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const combineLoaders = require('webpack-combine-loaders');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-module.exports = {
-  entry: './src/index.js',
+module.exports = () => ({
+  mode: 'production',
+  entry: {
+    app: path.resolve(__dirname, './src/index.js')
+  },
   output: {
-    path: path.join(__dirname + '/dist'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    path: path.join(`${__dirname}/dist`),
+    publicPath: '/',
+    chunkFilename: '[name].js',
+    filename: '[name].js'
   },
 
   module: {
@@ -32,7 +37,7 @@ module.exports = {
 
             query: {
               modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
+              localIdentName: '[hash:base64:5]'
             }
           }
         ]
@@ -41,14 +46,46 @@ module.exports = {
       {
         test: /\.css$/,
         include: /node_modules/,
-        use: [ 'style-loader', 'css-loader' ]
-      },
+        use: ['style-loader', 'css-loader']
+      }
     ]
+  },
+
+  optimization: {
+    minimize: true,
+    mergeDuplicateChunks: true,
+
+    runtimeChunk: {
+      name: 'runtime'
+    },
+    splitChunks: {
+      chunks: 'async',
+      minSize: 100000,
+      maxSize: 175000,
+      minChunks: 1,
+      maxAsyncRequests: 6,
+      maxInitialRequests: 6,
+      automaticNameDelimiter: '~',
+      name: true,
+
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          priority: -20,
+          chunks: 'all'
+        }
+      }
+    }
   },
 
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'Caching and Code Splitting',
       template: './public/index.html'
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled'
     })
   ],
 
@@ -62,4 +99,4 @@ module.exports = {
   stats: {
     errorDetails: true
   }
-};
+});
