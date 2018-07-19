@@ -1,12 +1,12 @@
 import React from 'react';
-import _ from 'lodash';
+import throttle from 'lodash.throttle';
 import { getItemsRequest } from '../../actions';
 
 const InfiniteScroll = conditionFn => Component => class withInfiniteScroll extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onScroll = _.throttle(this.onScroll, 1000).bind(this);
+    this.onScroll = throttle(this.onScroll, 1000).bind(this);
 
     window.addEventListener('scroll', this.onScroll, false);
   }

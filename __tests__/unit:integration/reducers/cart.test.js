@@ -1,5 +1,5 @@
 import sinon from 'sinon';
-import _ from 'lodash';
+import noop from 'lodash.noop';
 import cart from '../../../src/reducers/cart';
 import Storage from '../../../src/helpers/storage';
 import { addToCart, checkout } from '../../../src/actions';
@@ -43,7 +43,7 @@ describe('cart reducer', () => {
 
     const promise = Promise.resolve();
 
-    promise.then = _.noop;
+    promise.then = noop;
 
     sinon.stub(Storage, 'purge').returns(promise);
 

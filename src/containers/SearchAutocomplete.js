@@ -2,7 +2,7 @@ import React from 'react';
 import Autocomplete from 'react-autocomplete';
 import { Container } from 'reactstrap';
 import { parse, stringify } from 'query-string';
-import _ from 'lodash';
+import debounce from 'lodash.debounce';
 import { connect } from '../decorators';
 import { setFilters, getSearchSuggestions } from '../actions';
 import styles from '../styles/SearchAutocomplete.css';
@@ -27,7 +27,7 @@ export default class SearchAutocomplete extends React.Component {
     this.onSelect = this.onSelect.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
 
-    this.query = _.debounce(this.query, 250, { trailing: true }).bind(this);
+    this.query = debounce(this.query, 250, { trailing: true }).bind(this);
   }
 
   componentDidMount() {

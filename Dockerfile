@@ -33,4 +33,4 @@ ENV PUBLIC_PATH "/"
 RUN npm run build
 
 # Main command
-CMD [ "npm", "run", "start" ]
+CMD [ "yarn", "spin:up" ]
