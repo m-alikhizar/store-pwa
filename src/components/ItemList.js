@@ -6,8 +6,7 @@ import {
   ButtonDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavLink
+  DropdownItem
 } from 'reactstrap';
 import { parse, stringify } from 'query-string';
 import PropTypes from 'prop-types';
@@ -135,7 +134,7 @@ ItemList.propTypes = {
 const Actions = ({ dispatch, item }) => (
   <div style={{ marginTop: '10px' }}>
     <Button
-      style={{ marginRight: '10px' }}
+      style={{ marginRight: '10px', fontSize: '12px' }}
       size="sm"
       onClick={() => dispatch(addToCart({ ...item, quantity: 1 }))}
       color="primary"
@@ -143,9 +142,13 @@ const Actions = ({ dispatch, item }) => (
     >
       Add to Cart
     </Button>
-    <NavLink href={`/product/${item.id}`} style={{ display: 'inline' }}>
-      Details
-    </NavLink>
+    <Button
+      color="secondary"
+      href={`/product/${item.id}`}
+      style={{ display: 'inline', fontSize: '12px' }}
+    >
+      View more
+    </Button>
   </div>
 );
 
