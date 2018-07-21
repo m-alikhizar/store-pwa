@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
+    "express": "^4.16.3",
     "immutable": "^3.8.2",
     "lodash.clone": "^4.5.0",
     "lodash.debounce": "^4.0.8",
