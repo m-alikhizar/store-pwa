@@ -1,6 +1,7 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = () => ({
@@ -19,7 +20,7 @@ module.exports = () => ({
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /service-worker\.js/],
         use: {
           loader: 'babel-loader'
         }
@@ -86,6 +87,18 @@ module.exports = () => ({
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled'
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: require.resolve('workbox-sw'),
+        to: 'workbox-sw.prod.js'
+      }
+    ]),
+    new InjectManifest({
+      globDirectory: 'dist',
+      globPatterns: ['**/*.{html,js,css,png,json}'],
+      swSrc: path.join('src', 'service-worker.js'),
+      swDest: 'service-worker.js'
     })
   ],
 
