@@ -60,7 +60,7 @@
   "scripts": {
     "development": "webpack-dev-server  --mode=development --progress --colors --open --hot",
     "spin:up": "webpack-dev-server --mod=production --host 0.0.0.0 --open",
-    "build": "webpack --mode=production",
+    "build": "rimraf dist/* && webpack --mode=production",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:snapshot:update": "npm run test -- -u",
