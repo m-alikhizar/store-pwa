@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
@@ -99,6 +100,20 @@ module.exports = () => ({
       globPatterns: ['**/*.{html,js,css,png,json}'],
       swSrc: path.join('src', 'service-worker.js'),
       swDest: 'service-worker.js'
+    }),
+    new WebpackPwaManifest({
+      name: 'Store PWA',
+      short_name: 'PWA',
+      description: 'Awesome PWA!',
+      background_color: '#ffffff',
+      inject: true,
+      theme_color: '#ffffff',
+      icons: [
+        {
+          src: path.join('public', 'logo.png'),
+          sizes: [96, 128, 192, 256, 384, 512]
+        }
+      ]
     })
   ],
 
