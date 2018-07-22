@@ -1,22 +1,33 @@
-importScripts('workbox-sw.prod.js');
+importScripts('/workbox-sw.prod.js');
 
-const workboxSW = new self.WorkboxSW({
-  skipWaiting: true,
-  clientsClaim: true,
-  navigateFallback: '/index.html'
-});
+workbox.skipWaiting();
+workbox.clientsClaim();
 
-workboxSW.precache([]);
+workbox.precaching.precache(self.__precacheManifest);
 
-workboxSW.router.registerRoute(
-  /\.(?:png|gif|jpg)$/,
-  workboxSW.strategies.cacheFirst({
+workbox.routing.registerRoute(
+  /(.*picsum\.photos.*)|\.(?:png|gif|jpg)$/,
+  workbox.strategies.cacheFirst({
     cacheName: 'images-cache',
-    cacheExpiration: {
-      maxEntries: 50
-    }
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
+      }),
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200]
+      })
+    ]
   })
 );
 
-workboxSW.router.registerRoute(/index.html/, workboxSW.strategies.staleWhileRevalidate());
-workboxSW.router.registerRoute('/actions', workboxSW.strategies.staleWhileRevalidate());
+workbox.routing.registerRoute(/\//, workbox.strategies.cacheFirst());
+workbox.routing.registerRoute(
+  /.*\/simple-api-mock\/(?:products)$/,
+  workbox.strategies.networkFirst()
+);
+
+workbox.routing.registerRoute(
+  /.*\/simple-api-mock\/(?:products\/[0-9]+)$/,
+  workbox.strategies.networkFirst()
+);
