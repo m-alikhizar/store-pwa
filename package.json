@@ -73,7 +73,7 @@
     "test:coverage": "jest --coverage",
     "test:snapshot": "npm run test -- -u",
     "test:watch": "npm run test -- --watch",
-    "test:e2e": "start-server-and-test spin:up http://localhost:8090 e2e",
+    "test:e2e": "start-server-and-test spin-up http://localhost:8090 e2e",
     "e2e": "cypress run",
     "e2e:open": "cypress open",
     "lint": "eslint .",
