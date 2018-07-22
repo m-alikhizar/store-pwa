@@ -7,6 +7,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = () => ({
   mode: 'production',
+  devtool: 'source-map',
   entry: {
     app: path.resolve(__dirname, './src/index.js')
   },
@@ -53,10 +54,14 @@ module.exports = () => ({
     ]
   },
 
+  performance: {
+    maxEntrypointSize: 712000,
+    maxAssetSize: 712000
+  },
+
   optimization: {
     minimize: true,
     mergeDuplicateChunks: true,
-
     runtimeChunk: {
       name: 'runtime'
     },
@@ -95,12 +100,6 @@ module.exports = () => ({
         to: 'workbox-sw.prod.js'
       }
     ]),
-    new InjectManifest({
-      globDirectory: 'dist',
-      globPatterns: ['**/*.{html,js,css,png,json}'],
-      swSrc: path.join('src', 'service-worker.js'),
-      swDest: 'service-worker.js'
-    }),
     new WebpackPwaManifest({
       name: 'Store PWA',
       short_name: 'PWA',
@@ -114,10 +113,12 @@ module.exports = () => ({
           sizes: [96, 128, 192, 256, 384, 512]
         }
       ]
+    }),
+    new InjectManifest({
+      swSrc: path.join('src', 'service-worker.js'),
+      swDest: 'service-worker.js'
     })
   ],
-
-  devtool: 'source-map',
 
   devServer: {
     historyApiFallback: true,
