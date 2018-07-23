@@ -21,7 +21,9 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.routing.registerRoute(/\//, workbox.strategies.cacheFirst());
+workbox.routing.registerRoute(/\//, workbox.strategies.staleWhileRevalidate());
+workbox.routing.registerRoute(/\/products\/[0-9]+/, workbox.strategies.staleWhileRevalidate());
+
 workbox.routing.registerRoute(
   /.*\/simple-api-mock\/(?:products)$/,
   workbox.strategies.networkFirst()
