@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const CompressionPlugin = require('compression-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
@@ -105,7 +106,9 @@ module.exports = () => ({
       short_name: 'PWA',
       description: 'Awesome PWA!',
       background_color: '#ffffff',
+      fingerprints: true,
       inject: true,
+      lang: 'en-US',
       theme_color: '#ffffff',
       icons: [
         {
@@ -117,6 +120,14 @@ module.exports = () => ({
     new InjectManifest({
       swSrc: path.join('src', 'service-worker.js'),
       swDest: 'service-worker.js'
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+      threshold: 10240,
+      deleteOriginalAssets: true,
+      minRatio: 0.8
     })
   ],
 
