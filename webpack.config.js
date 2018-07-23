@@ -120,15 +120,16 @@ module.exports = () => ({
     new InjectManifest({
       swSrc: path.join('src', 'service-worker.js'),
       swDest: 'service-worker.js'
-    }),
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
-      threshold: 10240,
-      deleteOriginalAssets: true,
-      minRatio: 0.8
     })
+    // ,
+    // new CompressionPlugin({
+    //   asset: '[path].gz[query]',
+    //   algorithm: 'gzip',
+    //   test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+    //   threshold: 10240,
+    //   deleteOriginalAssets: true,
+    //   minRatio: 0.8
+    // })
   ],
 
   devServer: {
