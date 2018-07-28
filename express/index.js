@@ -21,6 +21,6 @@ app.get(/(?:service-worker\.js)$/, (req, res) => {
   res.sendFile(resolve(__dirname, '..', 'dist', 'service-worker.js'));
 });
 
-app.listen(process.env.PORT || 8090);
+app.listen(8090);
 
 console.log('App is listening.');
