@@ -35,8 +35,6 @@ Storage.default
   });
 
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-  console.log(process.env.NODE_ENV);
-  console.log('asfdsdsaf');
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js').catch(() => {});
   });
