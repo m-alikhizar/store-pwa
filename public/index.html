@@ -21,13 +21,75 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>Store</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .app-shell .header {
+      width: 100%;
+      margin-left: 0px;
+      background: #f7f7f7;
+      padding: 20px 20px;
+      font-size: 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    @keyframes placeHolderShimmer {
+      0% {
+        background-position: -468px 0
+      }
+      100% {
+        background-position: 468px 0
+      }
+    }
+
+    .animated-background {
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+      background: #f6f7f8;
+      background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+      background-size: 800px 104px;
+      height: 120px;
+      position: relative;
+      margin: 40px 0;
+    }
+
+    noscript {
+      top: 19px;
+      text-align: center;
+      display: block;
+      font-size: large;
+      background: #0075ef;
+      padding: 12px;
+      color: #fff;
+    }
+
+    .main {
+      margin: 0 auto;
+      max-width: 360px;
+    }
+  </style>
 </head>
 
 <body>
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
-  <div id="root"></div>
+  <div id="root">
+    <div class="app-shell">
+      <div class="header">
+        Store
+      </div>
+
+      <div class="timeline-item main">
+        <div class="animated-background"></div>
+      </div>
+    </div>
+  </div>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
