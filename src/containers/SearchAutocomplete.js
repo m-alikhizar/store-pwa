@@ -82,7 +82,7 @@ export default class SearchAutocomplete extends React.Component {
         <Autocomplete
           getItemValue={item => item.label}
           items={this.state.suggestions}
-          inputProps={{ onKeyDown: this.onKeyDown, placeholder: 'Search' }}
+          inputProps={{ onKeyDown: this.onKeyDown, placeholder: 'Search', 'aria-label': 'input' }}
           renderItem={renderItemComponent}
           value={this.state.value}
           onChange={this.onChange}

@@ -26,6 +26,7 @@ exports[`<Header /> should have a match snapshot 1`] = `
     </NavItem>
   </Nav>
   <NavbarToggler
+    aria-label="btn"
     onClick={[Function]}
     tag="button"
     type="button"

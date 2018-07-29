@@ -20,15 +20,8 @@ exports[`<Item /> should match snapshot 1`] = `
       }
       top={true}
     >
-      <Media
-        alt="placeholder image cap"
-        object={true}
+      <Image
         src="test"
-        style={
-          Object {
-            "width": "128px",
-          }
-        }
       />
     </Media>
     <Media

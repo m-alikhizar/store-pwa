@@ -1,6 +1,7 @@
 import React from 'react';
 import { Media } from 'reactstrap';
 import PropTypes from 'prop-types';
+import Image from './Image';
 
 const Item = ({
   img, name, price, id, children
@@ -8,7 +9,7 @@ const Item = ({
   <div className="product-item" style={{ padding: '15px' }}>
     <Media>
       <Media left top href="#" style={{ marginRight: '15px' }}>
-        <Media object src={img} alt="placeholder image cap" style={{ width: '128px' }} />
+        <Image src={img} />
       </Media>
       <Media body>
         <Media heading>

@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from './store';
 import App from './components/App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
 
 const Storage = require('./helpers/storage');
 
@@ -34,4 +34,8 @@ Storage.default
     );
   });
 
-// registerServiceWorker();
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+  });
+}
