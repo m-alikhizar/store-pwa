@@ -17,8 +17,6 @@ class Image extends React.Component {
 
     if (visible) {
       this.setState({ src });
-    } else {
-      this.setState({ src: '' });
     }
   }
 
@@ -26,8 +24,8 @@ class Image extends React.Component {
     const { src } = this.props;
 
     return (
-      <Sensor onChange={this.onChange}>
-        <Media object src={this.state.src} alt="loading..." style={{ width: '128px' }} />
+      <Sensor onChange={this.onChange} partialVisibility>
+        <Media object src={this.state.src} style={{ width: '128px', display: 'inline-block' }} />
       </Sensor>
     );
   }
