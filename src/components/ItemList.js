@@ -134,20 +134,16 @@ ItemList.propTypes = {
 const Actions = ({ dispatch, item }) => (
   <div style={{ marginTop: '10px' }}>
     <Button
-      style={{ marginRight: '10px', fontSize: '12px' }}
-      size="sm"
+      style={{ margin: '10px 10px 10px 0' }}
       onClick={() => dispatch(addToCart({ ...item, quantity: 1 }))}
       color="primary"
       className="add-to-cart"
     >
       Add to Cart
     </Button>
-    <Button
-      color="secondary"
-      href={`/product/${item.id}`}
-      style={{ display: 'inline', fontSize: '12px' }}
-    >
-      View more
+
+    <Button color="secondary" href={`/product/${item.id}`} style={{ display: 'inline' }}>
+      Details
     </Button>
   </div>
 );

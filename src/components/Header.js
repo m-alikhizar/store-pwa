@@ -34,32 +34,26 @@ export default class Header extends React.Component {
   render() {
     return (
       <Navbar className={styles.header} color="light" light expand="sm">
-        <NavbarBrand href="/">
-Store
-        </NavbarBrand>
+        <NavbarBrand href="/">Store</NavbarBrand>
         <Nav className="ml-auto" navbar>
           <NavItem>
             <SearchDropdown />
           </NavItem>
         </Nav>
 
-        <NavbarToggler onClick={this.toggle} />
+        <NavbarToggler onClick={this.toggle} aria-label="btn" />
 
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="/about">
-                <Button color="link">
-About
-                </Button>
+                <Button color="link">About</Button>
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink href="/products">
-                <Button color="link">
-Products
-                </Button>
+                <Button color="link">Products</Button>
               </NavLink>
             </NavItem>
 
