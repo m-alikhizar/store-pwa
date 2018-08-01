@@ -29,9 +29,8 @@ exports[`<Item /> should match snapshot 1`] = `
         </strong>
       </Media>
       <div>
-        Price: 
+        Price: $
         1
-         AED
       </div>
     </Media>
   </Media>
