@@ -1,0 +1,21 @@
+server {
+  listen $PORT default_server;
+
+  keepalive_timeout 5;
+
+  location / {
+      root   /usr/share/nginx/html;
+      index  index.html index.htm;
+      try_files $uri $uri/ /index.html;
+      proxy_set_header Host $host;
+  }
+
+  location ~* (serviceworker\.js)$ {
+    add_header 'Cache-Control' 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
+    default_type application/octet-stream;
+    expires off;
+    proxy_no_cache 1;
+  }
+
+  # rewrite service-worker\.js /service-worker\.js last;
+}
