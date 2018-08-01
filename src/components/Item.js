@@ -8,10 +8,8 @@ const Item = ({
 }) => (
   <div className="product-item" style={{ padding: '15px' }}>
     <Media>
-      <Media left top href="#" style={{ marginRight: '15px' }}>
-        <Image src={img} />
-      </Media>
-      <Media body>
+      <Image src={img} />
+      <Media body style={{ marginLeft: '15px' }}>
         <Media heading>
           <strong>{name}</strong>
         </Media>

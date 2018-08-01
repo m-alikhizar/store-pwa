@@ -38,29 +38,6 @@
       border-bottom: 1px solid #e0e0e0;
     }
 
-    @keyframes placeHolderShimmer {
-      0% {
-        background-position: -468px 0
-      }
-      100% {
-        background-position: 468px 0
-      }
-    }
-
-    .animated-background {
-      animation-duration: 1s;
-      animation-fill-mode: forwards;
-      animation-iteration-count: infinite;
-      animation-name: placeHolderShimmer;
-      animation-timing-function: linear;
-      background: #f6f7f8;
-      background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-      background-size: 800px 104px;
-      height: 120px;
-      position: relative;
-      margin: 40px 0;
-    }
-
     noscript {
       top: 19px;
       text-align: center;
@@ -69,11 +46,6 @@
       background: #0075ef;
       padding: 12px;
       color: #fff;
-    }
-
-    .main {
-      margin: 0 auto;
-      max-width: 360px;
     }
   </style>
 </head>
@@ -86,10 +58,6 @@
     <div class="app-shell">
       <div class="header">
         Store
-      </div>
-
-      <div class="timeline-item main">
-        <div class="animated-background"></div>
       </div>
     </div>
   </div>
