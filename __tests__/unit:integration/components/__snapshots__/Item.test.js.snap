@@ -10,22 +10,16 @@ exports[`<Item /> should match snapshot 1`] = `
   }
 >
   <Media>
-    <Media
-      href="#"
-      left={true}
-      style={
-        Object {
-          "marginRight": "15px",
-        }
-      }
-      top={true}
-    >
-      <Image
-        src="test"
-      />
-    </Media>
+    <Image
+      src="test"
+    />
     <Media
       body={true}
+      style={
+        Object {
+          "marginLeft": "15px",
+        }
+      }
     >
       <Media
         heading={true}
