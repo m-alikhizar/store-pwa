@@ -25,7 +25,12 @@ class Image extends React.Component {
 
     return (
       <Sensor onChange={this.onChange} partialVisibility>
-        <Media object src={this.state.src} style={{ width: '128px', display: 'inline-block' }} />
+        <Media
+          object
+          src={this.state.src}
+          alt="dp"
+          style={{ width: '128px', display: 'inline-block' }}
+        />
       </Sensor>
     );
   }
