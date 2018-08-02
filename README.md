@@ -2,8 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/khizar-ali/store.svg?style=svg)](https://circleci.com/gh/khizar-ali/store)
 
-![GitHub Logo](/public/audit-report.png)
-
 ## Prerequisites:
 
 1.  [Install Docker CLI](https://docs.docker.com/install/)
