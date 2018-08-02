@@ -80,7 +80,7 @@ export default class Cart extends React.Component {
                   displayType="text"
                   value={this.props.cart.price}
                   thousandSeparator
-                  prefix="$"
+                  suffix=" AED"
                 />
               </span>
               <NavLink

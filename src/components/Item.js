@@ -13,7 +13,7 @@ const Item = ({
         <Media heading>
           <strong>{name}</strong>
         </Media>
-        <div>Price: ${price}</div>
+        <div>Price: {price} AED</div>
         {children}
       </Media>
     </Media>
