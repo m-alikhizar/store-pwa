@@ -26,7 +26,7 @@ workbox.routing.registerRoute(/\/products\/[0-9]+/, workbox.strategies.staleWhil
 
 workbox.routing.registerRoute(
   /.*\/simple-api-mock\/(?:products)$/,
-  workbox.strategies.staleWhileRevalidate()
+  workbox.strategies.networkFirst()
 );
 
 workbox.routing.registerRoute(
