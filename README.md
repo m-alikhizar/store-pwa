@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/khizar-ali/store.svg?style=svg)](https://circleci.com/gh/khizar-ali/store)
 
-![GitHub Logo](/src/assets/demo.gif)
+![GitHub Logo](/public/audit-report.png)
 
 ## Prerequisites:
 
