@@ -19,6 +19,7 @@ jobs:
 
     steps:
       - checkout
+      - setup_remote_docker:
 
       # Download and cache dependencies
       - restore_cache:
@@ -36,8 +37,8 @@ jobs:
 
       # run tests!
       - run:
-        name: Run CI
-        command: yarn ci
+          name: Run CI
+          command: yarn ci
 
       # - run:
       #    name: Build Docker image
