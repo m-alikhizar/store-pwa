@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - checkout
-      # - setup_remote_docker:
+      - setup_remote_docker:
 
       # Download and cache dependencies
       - restore_cache:
@@ -35,8 +35,9 @@ jobs:
             - ~/.cache
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
 
-      # run tests!
-      - run: yarn ci
+      - run:
+         name: Run CI
+         command: yarn ci
 
       # - run:
       #    name: Build Docker image
