@@ -33,7 +33,7 @@ jobs:
       # run tests!
       - run:
         name: Run CI
-        commmand: yarn ci
+        command: yarn ci
 
       - run:
          name: Build Docker image
