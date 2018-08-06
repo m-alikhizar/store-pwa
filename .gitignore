@@ -4,7 +4,8 @@
 /node_modules
 
 # jenkins
-/jenkins/jenkins_home
+/jenkins
+/Jenkinsfile
 
 # testing
 /coverage
