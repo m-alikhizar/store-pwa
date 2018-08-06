@@ -28,7 +28,7 @@ ENV PUBLIC_PATH "/"
 
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-RUN yarn start:build
+# RUN yarn start:build
 
 # production environment
 

@@ -41,6 +41,10 @@ jobs:
          command: yarn ci
 
       - run:
+          name: Build
+          command: yarn start:build
+
+      - run:
          name: Build Docker image
          command: docker build -t khizarali/dockerized-store:$CIRCLE_SHA1 .
 
