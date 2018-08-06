@@ -36,9 +36,7 @@ jobs:
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
 
       # run tests!
-      - run:
-          name: Run CI
-          command: yarn ci
+      - run: yarn ci
 
       # - run:
       #    name: Build Docker image
