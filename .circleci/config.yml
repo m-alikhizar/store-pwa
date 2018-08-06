@@ -30,6 +30,11 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
+      - save_cache:
+          paths:
+            - ~/.cache
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+
       # run tests!
       - run:
         name: Run CI
@@ -38,11 +43,6 @@ jobs:
       # - run:
       #    name: Build Docker image
       #    command: docker build -t khizarali/dockerized-store:$CIRCLE_SHA1 .
-
-      - save_cache:
-          paths:
-            - ~/.cache
-          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
 
       # - run:
       #     name: Push to DockerHub
@@ -56,7 +56,7 @@ jobs:
       #        docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
       #        docker tag khizar/dockerized-store:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
       #        docker push registry.heroku.com/$HEROKU_APP_NAME/web
-workflows:
-  version: 2
-  jobs:
-      - build
+# workflows:
+#   version: 2
+#   jobs:
+#       - build
