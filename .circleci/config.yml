@@ -36,13 +36,10 @@ jobs:
             - ~/.cache
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
 
-      - run:
-         name: Run CI
-         command: yarn ci
+      # - run:
+      #    name: Run CI
+      #    command: yarn ci
 
-      - run:
-          name: Build
-          command: yarn start:build
   deploy:
     machine:
         enabled: true
@@ -50,12 +47,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Deploy to Heroku
-          commands:
-            - heroku plugins:install heroku-container-registry
-            - heroku container:login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY
-            - heroku container:push web --app $HEROKU_APP_NAME
-            - heroku container:release web --app $HEROKU_APP_NAME
+          name: Deploy on Heroku
+          command: |
+            heroku plugins:install heroku-container-registry
+            heroku container:login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY
+            heroku container:push web --app $HEROKU_APP_NAME
+            heroku container:release web --app $HEROKU_APP_NAME
 
       # - run:
       #    name: Build Docker image
