@@ -44,22 +44,15 @@ jobs:
           name: Build
           command: yarn start:build
 
-      - run:
-         name: Build Docker image
-         command: docker build -t khizarali/dockerized-store:$CIRCLE_SHA1 .
+  deployment:
+  prod:
+    branch: master
+    commands:
+      - heroku plugins:install heroku-container-registry
+      - heroku container:login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY
+      - heroku container:push web --app $HEROKU_APP_NAME
+      - heroku container:release web --app $HEROKU_APP_NAME
 
-      - run:
-          name: Push to DockerHub
-          command: |
-            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-            docker push khizarali/dockerized-store:$CIRCLE_SHA1
-
-      - run:
-          name: Deploy to Heroku
-          command: |
-             docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
-             docker tag khizarali/dockerized-store:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
-             docker push registry.heroku.com/$HEROKU_APP_NAME/web
 # workflows:
 #   version: 2
 #   jobs:
