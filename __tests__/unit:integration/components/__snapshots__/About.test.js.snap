@@ -13,7 +13,7 @@ exports[`<About /> should match snapshot 1`] = `
   <p
     className="lead"
   >
-    Github:: https://github.com/khizar-ali/store
+    Github: https://github.com/khizar-ali/store
   </p>
 </Container>
 `;
