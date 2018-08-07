@@ -37,6 +37,11 @@ ShallowWrapper {
           <Route
             component={[Function]}
             exact={true}
+            path="/about"
+          />
+          <Route
+            component={[Function]}
+            exact={true}
             path="/products"
           />
           <Route
@@ -89,6 +94,11 @@ ShallowWrapper {
                 component={[Function]}
                 exact={true}
                 path="/"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
+                path="/about"
               />
               <Route
                 component={[Function]}
@@ -150,6 +160,11 @@ ShallowWrapper {
               <Route
                 component={[Function]}
                 exact={true}
+                path="/about"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
                 path="/products"
               />
               <Route
@@ -175,6 +190,11 @@ ShallowWrapper {
                 component={[Function]}
                 exact={true}
                 path="/"
+              />
+              <Route
+                component={[Function]}
+                exact={true}
+                path="/about"
               />
               <Route
                 component={[Function]}
@@ -215,6 +235,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/about"
+                />,
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/products"
                 />,
                 <Route
@@ -237,6 +262,19 @@ ShallowWrapper {
                   "component": [Function],
                   "exact": true,
                   "path": "/",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "exact": true,
+                  "path": "/about",
                 },
                 "ref": null,
                 "rendered": null,
@@ -325,6 +363,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/about"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/products"
                 />
                 <Route
@@ -382,6 +425,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/about"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/products"
                 />
                 <Route
@@ -407,6 +455,11 @@ ShallowWrapper {
                   component={[Function]}
                   exact={true}
                   path="/"
+                />
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/about"
                 />
                 <Route
                   component={[Function]}
@@ -447,6 +500,11 @@ ShallowWrapper {
                   <Route
                     component={[Function]}
                     exact={true}
+                    path="/about"
+                  />,
+                  <Route
+                    component={[Function]}
+                    exact={true}
                     path="/products"
                   />,
                   <Route
@@ -469,6 +527,19 @@ ShallowWrapper {
                     "component": [Function],
                     "exact": true,
                     "path": "/",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
+                    "exact": true,
+                    "path": "/about",
                   },
                   "ref": null,
                   "rendered": null,
