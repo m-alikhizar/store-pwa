@@ -6,6 +6,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import ProductDetails from '../containers/ProductDetails';
 import Products from '../containers/Products';
 import Header from './Header';
+import About from './About';
 
 const App = () => (
   <Container fluid>
@@ -14,6 +15,7 @@ const App = () => (
       <Col lg={12}>
         <Switch>
           <Route exact path="/" component={Products} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/product/:id" component={ProductDetails} />
           <Route component={NotFound} />
