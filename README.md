@@ -16,3 +16,6 @@ $ docker run -d -p 8090:8090 --name store khizarali/store:latest
 ```
 
 Navigate to http://localhost:8090
+
+
+AuditReport: www.task-spa-product.gq_2018-08-02_19-39-04.lighthouse.report.json
