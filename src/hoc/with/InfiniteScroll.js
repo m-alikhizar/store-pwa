@@ -1,6 +1,6 @@
 import React from 'react';
 import throttle from 'lodash.throttle';
-import { getItemsRequest } from '../../actions';
+import { fromEvent } from "rxjs";
 
 const InfiniteScroll = conditionFn => Component => class withInfiniteScroll extends React.Component {
   constructor(props) {
@@ -8,11 +8,11 @@ const InfiniteScroll = conditionFn => Component => class withInfiniteScroll exte
 
     this.onScroll = throttle(this.onScroll, 1000).bind(this);
 
-    window.addEventListener('scroll', this.onScroll, false);
+    this.subscription = fromEvent(window, 'scroll').subscribe(this.onScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll, false);
+    this.subscription.unsubscribe();
   }
 
   onScroll(e) {

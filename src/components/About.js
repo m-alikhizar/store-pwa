@@ -1,10 +1,16 @@
+import styled from 'styled-components';
 import React from 'react';
-import { Container } from 'reactstrap';
+
+const Wrapper = styled.div`
+  margin: 100px;
+`;
+
+const A = styled.a ``;
 
 const About = () => (
-  <Container fluid style={{ margin: '100px' }}>
-    <p className="lead">Github:: https://github.com/khizar-ali/store</p>
-  </Container>
+  <Wrapper>
+    Github: <A href="https://github.com/khizar-ali/store" target="_blank">https://github.com/khizar-ali/store</A>
+  </Wrapper>
 );
 
 export default About;

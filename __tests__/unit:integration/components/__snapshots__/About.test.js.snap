@@ -1,19 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<About /> should match snapshot 1`] = `
-<Container
-  fluid={true}
-  style={
-    Object {
-      "margin": "100px",
-    }
-  }
-  tag="div"
->
-  <p
-    className="lead"
+<styled.div>
+  Github: 
+  <styled.a
+    href="https://github.com/khizar-ali/store"
+    target="_blank"
   >
-    Github:: https://github.com/khizar-ali/store
-  </p>
-</Container>
+    https://github.com/khizar-ali/store
+  </styled.a>
+</styled.div>
 `;
