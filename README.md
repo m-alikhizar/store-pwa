@@ -1,6 +1,6 @@
 # Store
 
-[![CircleCI](https://circleci.com/gh/khizar-ali/store.svg?style=svg)](https://circleci.com/gh/khizar-ali/store)
+[![CircleCI](https://circleci.com/gh/khizarvaio/dukaan.svg?style=svg)](https://circleci.com/gh/khizarvaio/dukaan)
 
 ## Prerequisites:
 
