@@ -50,7 +50,7 @@ describe('Products suite', () => {
     // should have two items listed, because there is one item added to cart twice.
     cy.get('.popover .popover-inner .popover-body .product-item').should('have.length', '2');
 
-    cy.get('.popover .total-price').should('text', 'TOTAL 856 AED');
+    cy.get('.popover .total-price').should('text', 'TOTAL $856');
 
     cy.get('#popover-cart').click();
   });
