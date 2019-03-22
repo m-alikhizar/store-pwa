@@ -6,7 +6,7 @@
 
 1.  [Install Docker CLI](https://docs.docker.com/install/)
 
-## Run the application
+## Run application
 
 In a terminal, run:
 
